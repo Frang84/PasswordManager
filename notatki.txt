@@ -1,0 +1,1 @@
+hashowanie wejsc przed dodaniem ich do bazy danych 
