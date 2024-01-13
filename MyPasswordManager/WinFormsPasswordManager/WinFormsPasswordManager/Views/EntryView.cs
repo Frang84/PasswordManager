@@ -53,7 +53,7 @@ namespace WinFormsPasswordManager.Views
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {
-            dataGridViewEntris.DataSource = entryList;
+            dataGridViewEntries.DataSource = entryList;
         }
     }
 }

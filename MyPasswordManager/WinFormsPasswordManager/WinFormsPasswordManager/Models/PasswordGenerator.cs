@@ -23,6 +23,16 @@ namespace WinFormsPasswordManager.Models
             throw new NotImplementedException();
         }
 
+        public string BuildAdvancedPassword()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string BuildBasicPassword()
+        {
+            throw new NotImplementedException();
+        }
+
         public void reset()
         {
             throw new NotImplementedException();

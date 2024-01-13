@@ -41,6 +41,7 @@ namespace WinFormsPasswordManager.Models
         public List<Entry> GetEntries()
         {
             List<Entry> result = new List<Entry> ();
+            
             foreach (Entry entry in _entryList) 
             {
                 result.Add (new Entry(entry.Title, entry.Password, entry.UserName, entry.Url, entry.Notes, entry.DateOfLastChange));

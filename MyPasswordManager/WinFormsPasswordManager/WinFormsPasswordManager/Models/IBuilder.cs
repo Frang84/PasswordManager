@@ -13,5 +13,7 @@ namespace WinFormsPasswordManager.Models
         public void AddBigLetters();
         public void AddSpecialCharacters();
         public void setLength();
+        public string BuildBasicPassword();
+        public string BuildAdvancedPassword();
     }
 }
