@@ -16,12 +16,8 @@ namespace WinFormsPasswordManager
             ApplicationConfiguration.Initialize();
             
             
-            List<Entry> entries = new List<Entry> { 
-            new Entry("Onet", "abcd", "Marek", "www.one.pl", "haslo do onet", DateTime.Now),
-            new Entry("Onet", "abcd", "Marek", "www.one.pl", "haslo do onet", DateTime.Now),
-            new Entry("Onet", "abcd", "Marek", "www.one.pl", "haslo do onet", DateTime.Now)
-            };
-            EntryOperation entryOperation = new EntryOperation(entries);
+            
+            EntryOperation entryOperation = new EntryOperation();
             EntryView view = new EntryView();
             EntryOperationsPresenter presenter = new EntryOperationsPresenter(view, entryOperation);
 

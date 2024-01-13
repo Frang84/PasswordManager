@@ -1,15 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "6EagggVGzXBo0IYzUgSKInc9kUX42Pv+dahZNhWClXXom1mTC7uG7FIkAXLCTuKBIgjm0Ii00kPF4nXN1x4fTQ==",
+  "dgSpecHash": "UfFTrUK8L2LQt5icjLLptglV1dgK7Lla+cFHwTRodfT6peN5qZZdvJODl5jaVqi3YsxrlOgXm5A3LiqH4vUvqA==",
   "success": true,
   "projectFilePath": "C:\\studia\\rokIII\\Vsemestr\\wzorceProjektowe\\Projekt\\wszystko\\PasswordManager\\MyPasswordManager\\WinFormsPasswordManager\\WinFormsPasswordManager\\WinFormsPasswordManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Karol\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
+    "C:\\Users\\Karol\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.26\\microsoft.data.sqlite.core.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.26\\microsoft.entityframeworkcore.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.26\\microsoft.entityframeworkcore.abstractions.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.26\\microsoft.entityframeworkcore.analyzers.6.0.26.nupkg.sha512",
+    "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.design\\6.0.26\\microsoft.entityframeworkcore.design.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.26\\microsoft.entityframeworkcore.relational.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite\\6.0.26\\microsoft.entityframeworkcore.sqlite.6.0.26.nupkg.sha512",
     "C:\\Users\\Karol\\.nuget\\packages\\microsoft.entityframeworkcore.sqlite.core\\6.0.26\\microsoft.entityframeworkcore.sqlite.core.6.0.26.nupkg.sha512",

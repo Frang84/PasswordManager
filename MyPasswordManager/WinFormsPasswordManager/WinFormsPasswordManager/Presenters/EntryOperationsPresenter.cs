@@ -20,7 +20,7 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperation = entryOperation;
             _entrysBindingSource = new BindingSource();
 
-            // this._entryOperationView.CreateEvent += Create();
+            this._entryOperationView.CreateEvent += Create;
             // this._entryOperationView.EditEvent += Edit();
             //this._entryOperationView.DeleteEvent += Delete();
             //this._entryOperationView.SearchEvent += Search();
@@ -36,24 +36,32 @@ namespace WinFormsPasswordManager.Presenters
             _entrysBindingSource.DataSource = this._entries;
         }
 
-        private EventHandler Search()
+        private void Search(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private EventHandler Delete()
+        private void Delete(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private EventHandler Edit()
+        private void Edit(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-        private EventHandler Create()
+        private void Create(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string title = _entryOperationView.EntryName;
+            string password = _entryOperationView.EntryPassword;
+            string name = _entryOperationView.EntryName;
+            string url = _entryOperationView.EntryUrl;
+            string notes = _entryOperationView.EntryNotes;
+            var entryToAdd = new Entry(title, password, name, url, notes, DateTime.Now);
+            _entryOperation.Create(entryToAdd);
+            LoadAllEntriesList();
+
         }
     }
 }

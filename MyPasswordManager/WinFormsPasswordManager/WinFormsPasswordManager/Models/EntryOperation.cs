@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsPasswordManager.Models;
+using WinFormsPasswordManager.Repository;
+using WinFormsPasswordManager.Views;
 
 namespace WinFormsPasswordManager.Models
 {
@@ -12,6 +15,12 @@ namespace WinFormsPasswordManager.Models
         private ISearchEngine _searchEngine;
         private Director _passwordGenerator;
         private List<Entry> _entryList;
+
+        public EntryOperation()
+        {
+            _entryList = new List<Entry>();
+        }
+        
         public EntryOperation(List<Entry> entryList)
         {
             _entryList = entryList;
@@ -21,6 +30,7 @@ namespace WinFormsPasswordManager.Models
             _entryList = entryList;
             _passwordGenerator = passwordGenerator;
             _searchEngine = searchEngine;
+
         }
         public void Edit()
         {
@@ -34,17 +44,22 @@ namespace WinFormsPasswordManager.Models
         {
 
         }
-        public void Create()
+        public void Create(Entry toCreate)
         {
+
+            using (var context = new EntriesContext())
+            {
+                context.Add(toCreate);
+                context.SaveChanges();
+            }
 
         }
         public List<Entry> GetEntries()
         {
-            List<Entry> result = new List<Entry> ();
-            
-            foreach (Entry entry in _entryList) 
+            List<Entry> result = null;
+            using(var context = new EntriesContext())
             {
-                result.Add (new Entry(entry.Title, entry.Password, entry.UserName, entry.Url, entry.Notes, entry.DateOfLastChange));
+                result = context.Entries.ToList();
             }
             return result;
         }

@@ -8,6 +8,8 @@ namespace WinFormsPasswordManager.Models
 {
     public class Entry
     {
+
+        public long Id { get; set; }
         private string _title;
         private string _password;
         private string _userName;
@@ -24,6 +26,7 @@ namespace WinFormsPasswordManager.Models
             Notes = notes;
             DateOfLastChange = dateOfLastChange;
         }
+       
 
         public string Title { get => _title; set => _title = value; }
         public string Password { get => _password; set => _password = value; }
