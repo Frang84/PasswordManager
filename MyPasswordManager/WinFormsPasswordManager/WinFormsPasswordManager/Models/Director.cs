@@ -8,17 +8,17 @@ namespace WinFormsPasswordManager.Models
 {
     public class Director
     {
-        private IBuilder _builder;
+        private IPasswordIBuilder _builder;
         private bool _bigLetters;
         private bool _digits;
         private int _length;
         private bool _specialCharacters;
         private bool _smallLettres;
-        public Director(IBuilder builder)
+        public Director(IPasswordIBuilder builder)
         {
             _builder = builder;
         }
-        public void ChangeDirector(IBuilder builder)
+        public void ChangeDirector(IPasswordIBuilder builder)
         {
             _builder = builder;
         }

@@ -1,46 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace WinFormsPasswordManager.Models
 {
-    public class PasswordGenerator : WinFormsPasswordManager.Models.IBuilder
+    public class PasswordGenerator : WinFormsPasswordManager.Models.IPasswordIBuilder
     {
-        public void AddBigLetters()
+        private string _password;
+        private int _length;
+        private string _symbolPool;
+        private readonly string _smallLetters;
+        
+        PasswordGenerator()
         {
-            throw new NotImplementedException();
+            _password = string.Empty;
+            _symbolPool = string.Empty;
+            _smallLetters = "abcdefghijklmnopiqrstuvwxyz";
+            
+        }
+        public void AddBigLetters(bool make)
+        {
+            if (make)
+            {
+                _symbolPool += _smallLetters.ToUpper();
+            }
         }
 
-        public void AddSmallLetters()
+        public void AddNumbers(bool make)
         {
-            throw new NotImplementedException();
+            if (make)
+            {
+                _symbolPool += "0123456789";
+            }
         }
 
-        public void AddSpecialCharacters()
+        public void AddSmallLetters(bool make)
         {
-            throw new NotImplementedException();
+            if (make)
+            {
+                _symbolPool += _smallLetters;
+            }
         }
 
-        public string BuildAdvancedPassword()
+        public void AddSpecialCharacters(bool make)
         {
-            throw new NotImplementedException();
+            if (make)
+            {
+                _symbolPool += "!@#$%^&*";
+            }
         }
 
-        public string BuildBasicPassword()
+        public void SetLength(int length)
         {
-            throw new NotImplementedException();
+            _length = length;
         }
-
-        public void reset()
+        public void Generate()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < _length; i++)
+            {
+                int random = RandomNumberGenerator.GetInt32(_symbolPool.Length);
+                _password += _symbolPool[random];
+            }
+            
         }
-
-        public void setLength()
+        public void Reset()
         {
-            throw new NotImplementedException();
+            _length = 0;
+            _password = string.Empty;
+            _symbolPool = string.Empty;
+
+        }
+        public string GetResult()
+        {
+            return _password;
         }
     }
 }
