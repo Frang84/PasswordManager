@@ -36,9 +36,13 @@ namespace WinFormsPasswordManager.Models
         {
 
         }
-        public void Delete() 
+        public void Delete(Entry entry) 
         {
-
+            using(var contex = new EntriesContext())
+            {
+                contex.Remove(contex.Entries.Single(e => e.Id == entry.Id));
+                contex.SaveChanges();
+            }
         }
         public List<Entry> Search(string searchValue)
         {

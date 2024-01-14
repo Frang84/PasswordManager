@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Entries = new Label();
             panel1 = new Panel();
             tabPageAddEntry = new TabPage();
+            buttonGeneratePassword = new Button();
             buttonCreate = new Button();
             textBoxNotes = new TextBox();
             labelNotes = new Label();
@@ -48,7 +49,7 @@
             textBoxSearchEntry = new TextBox();
             dataGridViewEntries = new DataGridView();
             tabPageEntriesOperations = new TabControl();
-            buttonGeneratePassword = new Button();
+            buttonDelete = new Button();
             panel1.SuspendLayout();
             tabPageAddEntry.SuspendLayout();
             EntryList.SuspendLayout();
@@ -96,6 +97,15 @@
             tabPageAddEntry.TabIndex = 1;
             tabPageAddEntry.Text = "Add Entry";
             tabPageAddEntry.UseVisualStyleBackColor = true;
+            // 
+            // buttonGeneratePassword
+            // 
+            buttonGeneratePassword.Location = new Point(856, 96);
+            buttonGeneratePassword.Name = "buttonGeneratePassword";
+            buttonGeneratePassword.Size = new Size(148, 29);
+            buttonGeneratePassword.TabIndex = 11;
+            buttonGeneratePassword.Text = "Password Generator";
+            buttonGeneratePassword.UseVisualStyleBackColor = true;
             // 
             // buttonCreate
             // 
@@ -188,6 +198,7 @@
             // 
             // EntryList
             // 
+            EntryList.Controls.Add(buttonDelete);
             EntryList.Controls.Add(SearchButton);
             EntryList.Controls.Add(textBoxSearchEntry);
             EntryList.Controls.Add(dataGridViewEntries);
@@ -201,7 +212,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(8, 43);
+            SearchButton.Location = new Point(6, 6);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(131, 27);
             SearchButton.TabIndex = 2;
@@ -210,7 +221,7 @@
             // 
             // textBoxSearchEntry
             // 
-            textBoxSearchEntry.Location = new Point(145, 43);
+            textBoxSearchEntry.Location = new Point(143, 6);
             textBoxSearchEntry.Name = "textBoxSearchEntry";
             textBoxSearchEntry.Size = new Size(811, 27);
             textBoxSearchEntry.TabIndex = 1;
@@ -220,14 +231,14 @@
             dataGridViewEntries.AllowUserToAddRows = false;
             dataGridViewEntries.AllowUserToDeleteRows = false;
             dataGridViewEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEntries.Dock = DockStyle.Bottom;
             dataGridViewEntries.Location = new Point(3, 81);
@@ -235,6 +246,7 @@
             dataGridViewEntries.ReadOnly = true;
             dataGridViewEntries.RowHeadersWidth = 51;
             dataGridViewEntries.RowTemplate.Height = 29;
+            dataGridViewEntries.SelectionMode = DataGridViewSelectionMode.CellSelect;
             dataGridViewEntries.Size = new Size(1008, 366);
             dataGridViewEntries.TabIndex = 0;
             // 
@@ -249,14 +261,14 @@
             tabPageEntriesOperations.Size = new Size(1022, 483);
             tabPageEntriesOperations.TabIndex = 2;
             // 
-            // buttonGeneratePassword
+            // buttonDelete
             // 
-            buttonGeneratePassword.Location = new Point(856, 96);
-            buttonGeneratePassword.Name = "buttonGeneratePassword";
-            buttonGeneratePassword.Size = new Size(148, 29);
-            buttonGeneratePassword.TabIndex = 11;
-            buttonGeneratePassword.Text = "Password Generator";
-            buttonGeneratePassword.UseVisualStyleBackColor = true;
+            buttonDelete.Location = new Point(6, 39);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(131, 29);
+            buttonDelete.TabIndex = 3;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
             // EntryView
             // 
@@ -300,5 +312,6 @@
         private Label labelUrl;
         private Button buttonCreate;
         private Button buttonGeneratePassword;
+        private Button buttonDelete;
     }
 }

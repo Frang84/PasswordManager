@@ -25,9 +25,10 @@ namespace WinFormsPasswordManager.Views
 
         private void AssociateAndRaiseViewEvents()
         {
-            SearchButton.Click += delegate {
+            SearchButton.Click += delegate
+            {
                 SearchEvent?.Invoke(this, EventArgs.Empty);
-                
+
             };
             textBoxSearchEntry.KeyDown += (s, e) =>
             {
@@ -35,11 +36,25 @@ namespace WinFormsPasswordManager.Views
                 {
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
-         
+
             };
-            buttonCreate.Click += delegate { 
+            buttonCreate.Click += delegate
+            {
                 CreateEvent?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show(_message);
+            };
+            buttonDelete.Click += delegate { 
+                var result = MessageBox.Show("Are you sure you want to delete selected entry?",
+                "Warning",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    
+                }
+                
+
             };
         }
 

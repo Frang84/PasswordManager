@@ -22,7 +22,7 @@ namespace WinFormsPasswordManager.Presenters
 
             this._entryOperationView.CreateEvent += Create;
             // this._entryOperationView.EditEvent += Edit;
-            //this._entryOperationView.DeleteEvent += Delete;
+            this._entryOperationView.DeleteEvent += Delete;
             this._entryOperationView.SearchEvent += Search;
             
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
@@ -52,7 +52,16 @@ namespace WinFormsPasswordManager.Presenters
 
         private void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entry = (Entry)_entrysBindingSource.Current;
+                this._entryOperation.Delete(entry);
+                _entryOperationView.Message = "Deleted succesfully";
+                LoadAllEntriesList();
+            }catch(Exception ex)
+            {
+                _entryOperationView.Message = "Delete operation Failed";
+            }
         }
 
         private void Edit(object sender, EventArgs e)
