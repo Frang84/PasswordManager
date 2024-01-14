@@ -14,6 +14,7 @@ namespace WinFormsPasswordManager.Views
         public string EntryUrl { get; set; }
         public string EntryNotes {  get; set; }
         public string SearchValue { get; set; }
+        public string Message {  get; set; }
         //public bool SearchByNameOrTitle { get; set; }
 
         

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Entries = new Label();
             panel1 = new Panel();
             tabPageAddEntry = new TabPage();
@@ -48,6 +48,7 @@
             textBoxSearchEntry = new TextBox();
             dataGridViewEntries = new DataGridView();
             tabPageEntriesOperations = new TabControl();
+            buttonGeneratePassword = new Button();
             panel1.SuspendLayout();
             tabPageAddEntry.SuspendLayout();
             EntryList.SuspendLayout();
@@ -76,6 +77,7 @@
             // 
             // tabPageAddEntry
             // 
+            tabPageAddEntry.Controls.Add(buttonGeneratePassword);
             tabPageAddEntry.Controls.Add(buttonCreate);
             tabPageAddEntry.Controls.Add(textBoxNotes);
             tabPageAddEntry.Controls.Add(labelNotes);
@@ -97,24 +99,24 @@
             // 
             // buttonCreate
             // 
-            buttonCreate.Location = new Point(8, 182);
+            buttonCreate.Location = new Point(8, 246);
             buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new Size(123, 47);
+            buttonCreate.Size = new Size(148, 29);
             buttonCreate.TabIndex = 10;
             buttonCreate.Text = "Create";
             buttonCreate.UseVisualStyleBackColor = true;
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(8, 149);
+            textBoxNotes.Location = new Point(8, 202);
             textBoxNotes.Name = "textBoxNotes";
-            textBoxNotes.Size = new Size(998, 27);
+            textBoxNotes.Size = new Size(996, 27);
             textBoxNotes.TabIndex = 9;
             // 
             // labelNotes
             // 
             labelNotes.AutoSize = true;
-            labelNotes.Location = new Point(8, 126);
+            labelNotes.Location = new Point(8, 179);
             labelNotes.Name = "labelNotes";
             labelNotes.Size = new Size(51, 20);
             labelNotes.TabIndex = 8;
@@ -122,15 +124,15 @@
             // 
             // textBoxUrl
             // 
-            textBoxUrl.Location = new Point(500, 96);
+            textBoxUrl.Location = new Point(8, 149);
             textBoxUrl.Name = "textBoxUrl";
-            textBoxUrl.Size = new Size(511, 27);
+            textBoxUrl.Size = new Size(996, 27);
             textBoxUrl.TabIndex = 7;
             // 
             // labelUrl
             // 
             labelUrl.AutoSize = true;
-            labelUrl.Location = new Point(500, 73);
+            labelUrl.Location = new Point(11, 126);
             labelUrl.Name = "labelUrl";
             labelUrl.Size = new Size(38, 20);
             labelUrl.TabIndex = 6;
@@ -141,7 +143,7 @@
             textBoxName.Location = new Point(498, 43);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(508, 27);
-            textBoxName.TabIndex = 5;
+            textBoxName.TabIndex = 3;
             // 
             // labelName
             // 
@@ -149,15 +151,15 @@
             labelName.Location = new Point(498, 20);
             labelName.Name = "labelName";
             labelName.Size = new Size(52, 20);
-            labelName.TabIndex = 4;
+            labelName.TabIndex = 2;
             labelName.Text = "Name:";
             // 
             // textBoxPassword
             // 
             textBoxPassword.Location = new Point(8, 96);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(484, 27);
-            textBoxPassword.TabIndex = 3;
+            textBoxPassword.Size = new Size(842, 27);
+            textBoxPassword.TabIndex = 5;
             // 
             // labelPassword
             // 
@@ -165,7 +167,7 @@
             labelPassword.Location = new Point(8, 73);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(77, 20);
-            labelPassword.TabIndex = 2;
+            labelPassword.TabIndex = 4;
             labelPassword.Text = "Password: ";
             // 
             // textBoxTitle
@@ -218,14 +220,14 @@
             dataGridViewEntries.AllowUserToAddRows = false;
             dataGridViewEntries.AllowUserToDeleteRows = false;
             dataGridViewEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEntries.Dock = DockStyle.Bottom;
             dataGridViewEntries.Location = new Point(3, 81);
@@ -246,6 +248,15 @@
             tabPageEntriesOperations.SelectedIndex = 0;
             tabPageEntriesOperations.Size = new Size(1022, 483);
             tabPageEntriesOperations.TabIndex = 2;
+            // 
+            // buttonGeneratePassword
+            // 
+            buttonGeneratePassword.Location = new Point(856, 96);
+            buttonGeneratePassword.Name = "buttonGeneratePassword";
+            buttonGeneratePassword.Size = new Size(148, 29);
+            buttonGeneratePassword.TabIndex = 11;
+            buttonGeneratePassword.Text = "Password Generator";
+            buttonGeneratePassword.UseVisualStyleBackColor = true;
             // 
             // EntryView
             // 
@@ -288,5 +299,6 @@
         private TextBox textBoxUrl;
         private Label labelUrl;
         private Button buttonCreate;
+        private Button buttonGeneratePassword;
     }
 }

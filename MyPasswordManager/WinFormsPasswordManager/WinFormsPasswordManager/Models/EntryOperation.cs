@@ -40,9 +40,14 @@ namespace WinFormsPasswordManager.Models
         {
 
         }
-        public void Search()
+        public List<Entry> Search(string searchValue)
         {
-
+            List<Entry> result = null;
+            using(var contex = new EntriesContext())
+            {
+                result = contex.Entries.Where(e => e.Title.StartsWith(searchValue)).ToList();
+            }
+            return result;
         }
         public void Create(Entry toCreate)
         {

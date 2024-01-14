@@ -21,9 +21,9 @@ namespace WinFormsPasswordManager.Presenters
             _entrysBindingSource = new BindingSource();
 
             this._entryOperationView.CreateEvent += Create;
-            // this._entryOperationView.EditEvent += Edit();
-            //this._entryOperationView.DeleteEvent += Delete();
-            //this._entryOperationView.SearchEvent += Search();
+            // this._entryOperationView.EditEvent += Edit;
+            //this._entryOperationView.DeleteEvent += Delete;
+            this._entryOperationView.SearchEvent += Search;
             
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
             LoadAllEntriesList();
@@ -38,7 +38,16 @@ namespace WinFormsPasswordManager.Presenters
 
         private void Search(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bool emptyValue = string.IsNullOrEmpty(this._entryOperationView.SearchValue);
+            if (emptyValue)
+            {
+                this._entries = this._entryOperation.GetEntries();
+            }
+            else
+            {
+                this._entries = this._entryOperation.Search(this._entryOperationView.SearchValue);
+            }
+            _entrysBindingSource.DataSource = _entries;
         }
 
         private void Delete(object sender, EventArgs e)
@@ -53,14 +62,24 @@ namespace WinFormsPasswordManager.Presenters
 
         private void Create(object sender, EventArgs e)
         {
-            string title = _entryOperationView.EntryName;
-            string password = _entryOperationView.EntryPassword;
-            string name = _entryOperationView.EntryName;
+            string title = _entryOperationView.EntryName.Trim();
+            string password = _entryOperationView.EntryPassword.Trim();
+            string name = _entryOperationView.EntryName.Trim();
             string url = _entryOperationView.EntryUrl;
             string notes = _entryOperationView.EntryNotes;
-            var entryToAdd = new Entry(title, password, name, url, notes, DateTime.Now);
-            _entryOperation.Create(entryToAdd);
-            LoadAllEntriesList();
+            if (!(string.IsNullOrEmpty(title) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name)) )
+            {
+                
+                var entryToAdd = new Entry(title, password, name, url, notes, DateTime.Now);
+                _entryOperation.Create(entryToAdd);
+                this._entryOperationView.Message = "Entry created";
+                LoadAllEntriesList();
+            }
+            else
+            {
+                this._entryOperationView.Message = "title, password and name are mandatory";
+            }
+            
 
         }
     }
