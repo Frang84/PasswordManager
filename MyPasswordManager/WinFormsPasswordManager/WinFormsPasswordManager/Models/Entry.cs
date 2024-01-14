@@ -26,7 +26,17 @@ namespace WinFormsPasswordManager.Models
             Notes = notes;
             DateOfLastChange = dateOfLastChange;
         }
-       
+
+        public Entry(string title, string password, string userName, string url, string notes, DateTime dateOfLastChange, long id)
+        {
+            Id = id;
+            Title = title;
+            Password = password;
+            UserName = userName;
+            Url = url;
+            Notes = notes;
+            DateOfLastChange = dateOfLastChange;
+        }
 
         public string Title { get => _title; set => _title = value; }
         public string Password { get => _password; set => _password = value; }

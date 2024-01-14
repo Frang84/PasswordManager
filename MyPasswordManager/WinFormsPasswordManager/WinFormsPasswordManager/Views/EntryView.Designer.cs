@@ -31,9 +31,9 @@
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Entries = new Label();
             panel1 = new Panel();
-            tabPageAddEntry = new TabPage();
+            tabPageEntryDetails = new TabPage();
             buttonGeneratePassword = new Button();
-            buttonCreate = new Button();
+            buttonSave = new Button();
             textBoxNotes = new TextBox();
             labelNotes = new Label();
             textBoxUrl = new TextBox();
@@ -45,13 +45,15 @@
             textBoxTitle = new TextBox();
             labelTitle = new Label();
             EntryList = new TabPage();
+            buttonAdd = new Button();
+            buttonEdit = new Button();
+            buttonDelete = new Button();
             SearchButton = new Button();
             textBoxSearchEntry = new TextBox();
             dataGridViewEntries = new DataGridView();
             tabPageEntriesOperations = new TabControl();
-            buttonDelete = new Button();
             panel1.SuspendLayout();
-            tabPageAddEntry.SuspendLayout();
+            tabPageEntryDetails.SuspendLayout();
             EntryList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEntries).BeginInit();
             tabPageEntriesOperations.SuspendLayout();
@@ -76,57 +78,57 @@
             panel1.Size = new Size(1022, 55);
             panel1.TabIndex = 1;
             // 
-            // tabPageAddEntry
+            // tabPageEntryDetails
             // 
-            tabPageAddEntry.Controls.Add(buttonGeneratePassword);
-            tabPageAddEntry.Controls.Add(buttonCreate);
-            tabPageAddEntry.Controls.Add(textBoxNotes);
-            tabPageAddEntry.Controls.Add(labelNotes);
-            tabPageAddEntry.Controls.Add(textBoxUrl);
-            tabPageAddEntry.Controls.Add(labelUrl);
-            tabPageAddEntry.Controls.Add(textBoxName);
-            tabPageAddEntry.Controls.Add(labelName);
-            tabPageAddEntry.Controls.Add(textBoxPassword);
-            tabPageAddEntry.Controls.Add(labelPassword);
-            tabPageAddEntry.Controls.Add(textBoxTitle);
-            tabPageAddEntry.Controls.Add(labelTitle);
-            tabPageAddEntry.Location = new Point(4, 29);
-            tabPageAddEntry.Name = "tabPageAddEntry";
-            tabPageAddEntry.Padding = new Padding(3);
-            tabPageAddEntry.Size = new Size(1014, 450);
-            tabPageAddEntry.TabIndex = 1;
-            tabPageAddEntry.Text = "Add Entry";
-            tabPageAddEntry.UseVisualStyleBackColor = true;
+            tabPageEntryDetails.Controls.Add(buttonGeneratePassword);
+            tabPageEntryDetails.Controls.Add(buttonSave);
+            tabPageEntryDetails.Controls.Add(textBoxNotes);
+            tabPageEntryDetails.Controls.Add(labelNotes);
+            tabPageEntryDetails.Controls.Add(textBoxUrl);
+            tabPageEntryDetails.Controls.Add(labelUrl);
+            tabPageEntryDetails.Controls.Add(textBoxName);
+            tabPageEntryDetails.Controls.Add(labelName);
+            tabPageEntryDetails.Controls.Add(textBoxPassword);
+            tabPageEntryDetails.Controls.Add(labelPassword);
+            tabPageEntryDetails.Controls.Add(textBoxTitle);
+            tabPageEntryDetails.Controls.Add(labelTitle);
+            tabPageEntryDetails.Location = new Point(4, 29);
+            tabPageEntryDetails.Name = "tabPageEntryDetails";
+            tabPageEntryDetails.Padding = new Padding(3);
+            tabPageEntryDetails.Size = new Size(1014, 450);
+            tabPageEntryDetails.TabIndex = 1;
+            tabPageEntryDetails.Text = "Entry Details";
+            tabPageEntryDetails.UseVisualStyleBackColor = true;
             // 
             // buttonGeneratePassword
             // 
-            buttonGeneratePassword.Location = new Point(856, 96);
+            buttonGeneratePassword.Location = new Point(851, 153);
             buttonGeneratePassword.Name = "buttonGeneratePassword";
-            buttonGeneratePassword.Size = new Size(148, 29);
+            buttonGeneratePassword.Size = new Size(153, 29);
             buttonGeneratePassword.TabIndex = 11;
             buttonGeneratePassword.Text = "Password Generator";
             buttonGeneratePassword.UseVisualStyleBackColor = true;
             // 
-            // buttonCreate
+            // buttonSave
             // 
-            buttonCreate.Location = new Point(8, 246);
-            buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new Size(148, 29);
-            buttonCreate.TabIndex = 10;
-            buttonCreate.Text = "Create";
-            buttonCreate.UseVisualStyleBackColor = true;
+            buttonSave.Location = new Point(11, 292);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(148, 29);
+            buttonSave.TabIndex = 10;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(8, 202);
+            textBoxNotes.Location = new Point(6, 259);
             textBoxNotes.Name = "textBoxNotes";
-            textBoxNotes.Size = new Size(996, 27);
+            textBoxNotes.Size = new Size(998, 27);
             textBoxNotes.TabIndex = 9;
             // 
             // labelNotes
             // 
             labelNotes.AutoSize = true;
-            labelNotes.Location = new Point(8, 179);
+            labelNotes.Location = new Point(8, 236);
             labelNotes.Name = "labelNotes";
             labelNotes.Size = new Size(51, 20);
             labelNotes.TabIndex = 8;
@@ -134,15 +136,15 @@
             // 
             // textBoxUrl
             // 
-            textBoxUrl.Location = new Point(8, 149);
+            textBoxUrl.Location = new Point(6, 206);
             textBoxUrl.Name = "textBoxUrl";
-            textBoxUrl.Size = new Size(996, 27);
+            textBoxUrl.Size = new Size(998, 27);
             textBoxUrl.TabIndex = 7;
             // 
             // labelUrl
             // 
             labelUrl.AutoSize = true;
-            labelUrl.Location = new Point(11, 126);
+            labelUrl.Location = new Point(6, 183);
             labelUrl.Name = "labelUrl";
             labelUrl.Size = new Size(38, 20);
             labelUrl.TabIndex = 6;
@@ -150,7 +152,7 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(498, 43);
+            textBoxName.Location = new Point(496, 100);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(508, 27);
             textBoxName.TabIndex = 3;
@@ -158,7 +160,7 @@
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(498, 20);
+            labelName.Location = new Point(496, 77);
             labelName.Name = "labelName";
             labelName.Size = new Size(52, 20);
             labelName.TabIndex = 2;
@@ -166,15 +168,15 @@
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(8, 96);
+            textBoxPassword.Location = new Point(6, 153);
             textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.Size = new Size(842, 27);
+            textBoxPassword.Size = new Size(839, 27);
             textBoxPassword.TabIndex = 5;
             // 
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(8, 73);
+            labelPassword.Location = new Point(6, 130);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(77, 20);
             labelPassword.TabIndex = 4;
@@ -182,7 +184,7 @@
             // 
             // textBoxTitle
             // 
-            textBoxTitle.Location = new Point(8, 43);
+            textBoxTitle.Location = new Point(6, 100);
             textBoxTitle.Name = "textBoxTitle";
             textBoxTitle.Size = new Size(484, 27);
             textBoxTitle.TabIndex = 1;
@@ -190,7 +192,7 @@
             // labelTitle
             // 
             labelTitle.AutoSize = true;
-            labelTitle.Location = new Point(8, 20);
+            labelTitle.Location = new Point(6, 77);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(41, 20);
             labelTitle.TabIndex = 0;
@@ -198,6 +200,8 @@
             // 
             // EntryList
             // 
+            EntryList.Controls.Add(buttonAdd);
+            EntryList.Controls.Add(buttonEdit);
             EntryList.Controls.Add(buttonDelete);
             EntryList.Controls.Add(SearchButton);
             EntryList.Controls.Add(textBoxSearchEntry);
@@ -209,6 +213,33 @@
             EntryList.TabIndex = 0;
             EntryList.Text = "Entry List";
             EntryList.UseVisualStyleBackColor = true;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Location = new Point(6, 39);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(131, 29);
+            buttonAdd.TabIndex = 5;
+            buttonAdd.Text = "Add";
+            buttonAdd.UseVisualStyleBackColor = true;
+            // 
+            // buttonEdit
+            // 
+            buttonEdit.Location = new Point(143, 39);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(131, 29);
+            buttonEdit.TabIndex = 4;
+            buttonEdit.Text = "Edit";
+            buttonEdit.UseVisualStyleBackColor = true;
+            // 
+            // buttonDelete
+            // 
+            buttonDelete.Location = new Point(280, 39);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(131, 29);
+            buttonDelete.TabIndex = 3;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
             // SearchButton
             // 
@@ -253,22 +284,13 @@
             // tabPageEntriesOperations
             // 
             tabPageEntriesOperations.Controls.Add(EntryList);
-            tabPageEntriesOperations.Controls.Add(tabPageAddEntry);
+            tabPageEntriesOperations.Controls.Add(tabPageEntryDetails);
             tabPageEntriesOperations.Dock = DockStyle.Fill;
             tabPageEntriesOperations.Location = new Point(0, 55);
             tabPageEntriesOperations.Name = "tabPageEntriesOperations";
             tabPageEntriesOperations.SelectedIndex = 0;
             tabPageEntriesOperations.Size = new Size(1022, 483);
             tabPageEntriesOperations.TabIndex = 2;
-            // 
-            // buttonDelete
-            // 
-            buttonDelete.Location = new Point(6, 39);
-            buttonDelete.Name = "buttonDelete";
-            buttonDelete.Size = new Size(131, 29);
-            buttonDelete.TabIndex = 3;
-            buttonDelete.Text = "Delete";
-            buttonDelete.UseVisualStyleBackColor = true;
             // 
             // EntryView
             // 
@@ -281,8 +303,8 @@
             Text = "EntryView";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            tabPageAddEntry.ResumeLayout(false);
-            tabPageAddEntry.PerformLayout();
+            tabPageEntryDetails.ResumeLayout(false);
+            tabPageEntryDetails.PerformLayout();
             EntryList.ResumeLayout(false);
             EntryList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEntries).EndInit();
@@ -294,7 +316,7 @@
 
         private Label Entries;
         private Panel panel1;
-        private TabPage tabPageAddEntry;
+        private TabPage tabPageEntryDetails;
         private TabPage EntryList;
         private Button SearchButton;
         private TextBox textBoxSearchEntry;
@@ -310,8 +332,10 @@
         private Label labelNotes;
         private TextBox textBoxUrl;
         private Label labelUrl;
-        private Button buttonCreate;
+        private Button buttonSave;
         private Button buttonGeneratePassword;
         private Button buttonDelete;
+        private Button buttonEdit;
+        private Button buttonAdd;
     }
 }

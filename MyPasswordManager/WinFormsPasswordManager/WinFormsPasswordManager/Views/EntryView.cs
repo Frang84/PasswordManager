@@ -15,12 +15,14 @@ namespace WinFormsPasswordManager.Views
     public partial class EntryView : Form, IEntryOperationView
     {
         private string _message;
+        private bool _isEdit;
+        private long _id;
 
         public EntryView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
-            //tabPageEntryList.TabPages.Remove(tabPage2);
+            tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -38,12 +40,20 @@ namespace WinFormsPasswordManager.Views
                 }
 
             };
-            buttonCreate.Click += delegate
+            buttonSave.Click += delegate
             {
                 CreateEvent?.Invoke(this, EventArgs.Empty);
+                tabPageEntriesOperations.TabPages.Add(EntryList);
+                tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
                 MessageBox.Show(_message);
             };
-            buttonDelete.Click += delegate { 
+            buttonAdd.Click += delegate
+            {
+                tabPageEntriesOperations.TabPages.Remove(EntryList);
+                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+            };
+            buttonDelete.Click += delegate
+            {
                 var result = MessageBox.Show("Are you sure you want to delete selected entry?",
                 "Warning",
                 MessageBoxButtons.YesNo,
@@ -51,10 +61,14 @@ namespace WinFormsPasswordManager.Views
                 if (result == DialogResult.Yes)
                 {
                     DeleteEvent?.Invoke(this, EventArgs.Empty);
-                    
-                }
-                
 
+                }
+            };
+            buttonEdit.Click += delegate
+            {
+                tabPageEntriesOperations.TabPages.Remove(EntryList);
+                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                EditEvent?.Invoke(this, EventArgs.Empty);
             };
         }
 
@@ -66,17 +80,18 @@ namespace WinFormsPasswordManager.Views
         public string SearchValue { get => textBoxSearchEntry.Text; set => textBoxSearchEntry.Text = value; }
         //public bool SearchByNameOrTitle { get => ByTitleCheckBox.Checked; set => ByTitleCheckBox.Checked = value; }
         public string Message { get => _message; set => _message = value; }
+        public bool IsEdit { get => _isEdit; set => _isEdit = value; }
+        public long Id { get => _id; set => _id = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
         public event EventHandler EditEvent;
         public event EventHandler CreateEvent;
+        public event EventHandler SaveEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {
             dataGridViewEntries.DataSource = entryList;
         }
-
-
     }
 }

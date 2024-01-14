@@ -32,9 +32,21 @@ namespace WinFormsPasswordManager.Models
             _searchEngine = searchEngine;
 
         }
-        public void Edit()
+        public void Edit(Entry entry)
         {
-
+            using(var contex = new EntriesContext())
+            {
+                var result = contex.Entries.SingleOrDefault(b => b.Id == entry.Id); ;
+                if(result != null)
+                {
+                    
+                    result.Title = entry.Title;
+                    result.UserName = entry.UserName;
+                    result.DateOfLastChange = DateTime.Now;
+                    result.Notes = entry.Notes;
+                    contex.SaveChanges();
+                }
+            }
         }
         public void Delete(Entry entry) 
         {

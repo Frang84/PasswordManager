@@ -8,6 +8,7 @@ namespace WinFormsPasswordManager.Views
 {
     public interface IEntryOperationView
     {
+        public long Id { get; set; }
         public string EntryTitle { get; set; }
         public string EntryPassword { get; set; }
         public string EntryName { get; set; }
@@ -15,6 +16,7 @@ namespace WinFormsPasswordManager.Views
         public string EntryNotes {  get; set; }
         public string SearchValue { get; set; }
         public string Message {  get; set; }
+        public bool IsEdit {  get; set; }
         //public bool SearchByNameOrTitle { get; set; }
 
         
@@ -23,6 +25,7 @@ namespace WinFormsPasswordManager.Views
         event EventHandler DeleteEvent;
         event EventHandler EditEvent;
         event EventHandler CreateEvent;
+        event EventHandler SaveEvent;
 
         void SetEntryListBindingSource(BindingSource entryList);
         

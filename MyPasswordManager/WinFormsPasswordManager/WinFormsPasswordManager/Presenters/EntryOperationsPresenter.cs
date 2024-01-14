@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsPasswordManager.Views;
 using WinFormsPasswordManager.Models;
+using System.Drawing.Text;
 
 namespace WinFormsPasswordManager.Presenters
 {
@@ -21,7 +22,7 @@ namespace WinFormsPasswordManager.Presenters
             _entrysBindingSource = new BindingSource();
 
             this._entryOperationView.CreateEvent += Create;
-            // this._entryOperationView.EditEvent += Edit;
+            this._entryOperationView.EditEvent += Edit;
             this._entryOperationView.DeleteEvent += Delete;
             this._entryOperationView.SearchEvent += Search;
             
@@ -60,28 +61,45 @@ namespace WinFormsPasswordManager.Presenters
                 LoadAllEntriesList();
             }catch(Exception ex)
             {
-                _entryOperationView.Message = "Delete operation Failed";
+                _entryOperationView.Message = "Delete operation failed";
             }
         }
 
         private void Edit(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+        {    
+            var entry = (Entry)_entrysBindingSource.Current;
+            _entryOperationView.Id = entry.Id;
+            _entryOperationView.EntryName = entry.UserName;
+            _entryOperationView.EntryTitle = entry.Title;
+            _entryOperationView.EntryPassword = entry.Password;
+            _entryOperationView.EntryNotes = entry.Notes;
+            _entryOperationView.EntryUrl = entry.Url;
+            _entryOperationView.IsEdit = true;
+                
         }
 
         private void Create(object sender, EventArgs e)
         {
-            string title = _entryOperationView.EntryName.Trim();
+            long id = _entryOperationView.Id;
+            string title = _entryOperationView.EntryTitle.Trim();
             string password = _entryOperationView.EntryPassword.Trim();
             string name = _entryOperationView.EntryName.Trim();
             string url = _entryOperationView.EntryUrl;
             string notes = _entryOperationView.EntryNotes;
-            if (!(string.IsNullOrEmpty(title) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name)) )
+            if (!(string.IsNullOrEmpty(title) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(name)))
             {
-                
-                var entryToAdd = new Entry(title, password, name, url, notes, DateTime.Now);
-                _entryOperation.Create(entryToAdd);
-                this._entryOperationView.Message = "Entry created";
+
+                var entry = new Entry(title, password, name, url, notes, DateTime.Now, id);
+                if (_entryOperationView.IsEdit)
+                {
+                    _entryOperation.Edit(entry);
+                    this._entryOperationView.Message = "Entry edited";
+                }
+                else
+                {
+                    _entryOperation.Create(entry);
+                    this._entryOperationView.Message = "Entry created";
+                }
                 LoadAllEntriesList();
             }
             else
@@ -89,7 +107,14 @@ namespace WinFormsPasswordManager.Presenters
                 this._entryOperationView.Message = "title, password and name are mandatory";
             }
             
-
+            CleanViewFields();
+        }
+        private void CleanViewFields()
+        {
+            _entryOperationView.EntryName = string.Empty;
+            _entryOperationView.EntryPassword = string.Empty;
+            _entryOperationView.EntryTitle = string.Empty;
+            _entryOperationView.EntryUrl = string.Empty;
         }
     }
 }

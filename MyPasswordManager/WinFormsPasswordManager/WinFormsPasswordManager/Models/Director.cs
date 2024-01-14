@@ -18,8 +18,16 @@ namespace WinFormsPasswordManager.Models
         {
             _builder = builder;
         }
+        public void ChangeDirector(IBuilder builder)
+        {
+            _builder = builder;
+        }
 
-        public string MakePasswordWithFlags()
+        public string GenerateBasicPassword()
+        {
+            return null;
+        }
+        public string GenerateAdvancedPassword()
         {
             return null;
         }
