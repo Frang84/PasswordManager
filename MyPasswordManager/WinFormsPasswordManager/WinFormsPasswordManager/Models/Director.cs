@@ -30,6 +30,7 @@ namespace WinFormsPasswordManager.Models
             _builder.AddSmallLetters(true);
             _builder.AddNumbers(true);
             _builder.AddSpecialCharacters(false);
+            _builder.SetLength(20);
             _builder.Generate();
             string result = _builder.GetResult();
             return result;

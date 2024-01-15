@@ -49,6 +49,7 @@ namespace WinFormsPasswordManager.Views
             };
             buttonAdd.Click += delegate
             {
+                PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
                 tabPageEntriesOperations.TabPages.Remove(EntryList);
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
             };
@@ -88,6 +89,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler EditEvent;
         public event EventHandler CreateEvent;
         public event EventHandler SaveEvent;
+        public event EventHandler PasswordGenerateEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {

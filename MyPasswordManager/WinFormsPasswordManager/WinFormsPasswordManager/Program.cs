@@ -17,7 +17,7 @@ namespace WinFormsPasswordManager
 
             IPasswordIBuilder passwordIBuilder = new PasswordGenerator();
             Director director = new Director(passwordIBuilder);
-            EntryOperation entryOperation = new EntryOperation();
+            EntryOperation entryOperation = new EntryOperation(director, null);
             EntryView view = new EntryView();
             EntryOperationsPresenter presenter = new EntryOperationsPresenter(view, entryOperation);
 

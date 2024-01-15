@@ -13,7 +13,7 @@ namespace WinFormsPasswordManager.Models
     public class EntryOperation
     {
         private ISearchEngine _searchEngine;
-        private Director _passwordGenerator;
+        public Director _passwordGenerator;
         private List<Entry> _entryList;
 
         public EntryOperation()

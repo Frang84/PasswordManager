@@ -25,6 +25,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.EditEvent += Edit;
             this._entryOperationView.DeleteEvent += Delete;
             this._entryOperationView.SearchEvent += Search;
+            this._entryOperationView.PasswordGenerateEvent += GeneratePassword;
             
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
             LoadAllEntriesList();
@@ -76,6 +77,10 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperationView.EntryUrl = entry.Url;
             _entryOperationView.IsEdit = true;
                 
+        }
+        private void GeneratePassword(object sender, EventArgs e)
+        {
+           _entryOperationView.EntryPassword = _entryOperation._passwordGenerator.GenerateBasicPassword();
         }
 
         private void Create(object sender, EventArgs e)
