@@ -26,7 +26,9 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.DeleteEvent += Delete;
             this._entryOperationView.SearchEvent += Search;
             this._entryOperationView.PasswordGenerateEvent += GeneratePassword;
-            
+            this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
+
+
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
             LoadAllEntriesList();
 
@@ -81,6 +83,25 @@ namespace WinFormsPasswordManager.Presenters
         private void GeneratePassword(object sender, EventArgs e)
         {
            _entryOperationView.EntryPassword = _entryOperation._passwordGenerator.GenerateBasicPassword();
+        }
+        private void GenerateAdvancedPassword(object sender, EventArgs e)
+        {
+            int length = 0;
+            try
+            {
+                length = Int32.Parse(_entryOperationView.LengthOfPassword);
+            }
+            catch(FormatException ex)
+            {
+                Console.WriteLine($"Unable to parse '{_entryOperationView.LengthOfPassword}'");
+            }
+
+            _entryOperationView.EntryPassword = _entryOperation._passwordGenerator.GenerateAdvancedPassword(
+                _entryOperationView.SmallLetters,
+                _entryOperationView.Numbers,
+                _entryOperationView.SpecialCharacters,
+                _entryOperationView.Brackets,
+                length);
         }
 
         private void Create(object sender, EventArgs e)

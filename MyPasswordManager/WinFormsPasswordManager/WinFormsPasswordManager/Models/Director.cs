@@ -9,12 +9,6 @@ namespace WinFormsPasswordManager.Models
     public class Director
     {
         private IPasswordIBuilder _builder;
-        private bool _bigLetters;
-        private bool _digits;
-        private int _length;
-        private bool _specialCharacters;
-        private bool _smallLettres;
-        private bool _brackets;
         public Director(IPasswordIBuilder builder)
         {
             _builder = builder;
@@ -35,9 +29,16 @@ namespace WinFormsPasswordManager.Models
             string result = _builder.GetResult();
             return result;
         }
-        public string GenerateAdvancedPassword()
+        public string GenerateAdvancedPassword(bool smallLetters, bool numbers, bool specialCharacters,bool brackets ,int length)
         {
-            return null;
+            _builder.AddBigLetters(true);
+            _builder.AddSmallLetters(smallLetters);
+            _builder.AddNumbers(numbers);
+            _builder.AddBrackets(brackets);
+            _builder.AddSpecialCharacters(specialCharacters);
+            _builder.SetLength(length);
+            _builder.Generate();
+            return _builder.GetResult();
         }
     }
 }

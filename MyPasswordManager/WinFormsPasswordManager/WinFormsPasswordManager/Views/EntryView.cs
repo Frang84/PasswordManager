@@ -23,6 +23,7 @@ namespace WinFormsPasswordManager.Views
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
+            tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -45,6 +46,7 @@ namespace WinFormsPasswordManager.Views
                 CreateEvent?.Invoke(this, EventArgs.Empty);
                 tabPageEntriesOperations.TabPages.Add(EntryList);
                 tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
+                tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
                 MessageBox.Show(_message);
             };
             buttonAdd.Click += delegate
@@ -52,6 +54,7 @@ namespace WinFormsPasswordManager.Views
                 PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
                 tabPageEntriesOperations.TabPages.Remove(EntryList);
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                tabPageEntriesOperations.TabPages.Add(tabPagePasswordGenerator);
             };
             buttonDelete.Click += delegate
             {
@@ -71,6 +74,10 @@ namespace WinFormsPasswordManager.Views
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
                 EditEvent?.Invoke(this, EventArgs.Empty);
             };
+            buttonGenerate.Click += delegate
+            {
+                AdvancedPasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
+            };
         }
 
         public string EntryTitle { get => textBoxTitle.Text; set => textBoxTitle.Text = value; }
@@ -83,6 +90,12 @@ namespace WinFormsPasswordManager.Views
         public string Message { get => _message; set => _message = value; }
         public bool IsEdit { get => _isEdit; set => _isEdit = value; }
         public long Id { get => _id; set => _id = value; }
+        public bool SmallLetters { get => checkBoxSmallLetters.Checked; }
+        public bool Numbers { get => checkBoxNumbers.Checked; }
+        public bool SpecialCharacters { get => checkBoxSpecialCharacters.Checked; }
+        public bool Brackets { get => checkBoxSpecialBrackets.Checked; }
+        public string LengthOfPassword { get => textBoxLength.Text; set => textBoxLength.Text = value; }
+
 
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
@@ -90,6 +103,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler CreateEvent;
         public event EventHandler SaveEvent;
         public event EventHandler PasswordGenerateEvent;
+        public event EventHandler AdvancedPasswordGenerateEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {

@@ -52,11 +52,21 @@
             textBoxSearchEntry = new TextBox();
             dataGridViewEntries = new DataGridView();
             tabPageEntriesOperations = new TabControl();
+            tabPagePasswordGenerator = new TabPage();
+            labelBigLetters = new Label();
+            buttonGenerate = new Button();
+            textBoxLength = new TextBox();
+            labelLength = new Label();
+            checkBoxSpecialCharacters = new CheckBox();
+            checkBoxSpecialBrackets = new CheckBox();
+            checkBoxNumbers = new CheckBox();
+            checkBoxSmallLetters = new CheckBox();
             panel1.SuspendLayout();
             tabPageEntryDetails.SuspendLayout();
             EntryList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEntries).BeginInit();
             tabPageEntriesOperations.SuspendLayout();
+            tabPagePasswordGenerator.SuspendLayout();
             SuspendLayout();
             // 
             // Entries
@@ -286,12 +296,110 @@
             // 
             tabPageEntriesOperations.Controls.Add(EntryList);
             tabPageEntriesOperations.Controls.Add(tabPageEntryDetails);
+            tabPageEntriesOperations.Controls.Add(tabPagePasswordGenerator);
             tabPageEntriesOperations.Dock = DockStyle.Fill;
             tabPageEntriesOperations.Location = new Point(0, 55);
             tabPageEntriesOperations.Name = "tabPageEntriesOperations";
             tabPageEntriesOperations.SelectedIndex = 0;
             tabPageEntriesOperations.Size = new Size(1022, 483);
             tabPageEntriesOperations.TabIndex = 2;
+            // 
+            // tabPagePasswordGenerator
+            // 
+            tabPagePasswordGenerator.Controls.Add(labelBigLetters);
+            tabPagePasswordGenerator.Controls.Add(buttonGenerate);
+            tabPagePasswordGenerator.Controls.Add(textBoxLength);
+            tabPagePasswordGenerator.Controls.Add(labelLength);
+            tabPagePasswordGenerator.Controls.Add(checkBoxSpecialCharacters);
+            tabPagePasswordGenerator.Controls.Add(checkBoxSpecialBrackets);
+            tabPagePasswordGenerator.Controls.Add(checkBoxNumbers);
+            tabPagePasswordGenerator.Controls.Add(checkBoxSmallLetters);
+            tabPagePasswordGenerator.Location = new Point(4, 29);
+            tabPagePasswordGenerator.Name = "tabPagePasswordGenerator";
+            tabPagePasswordGenerator.Padding = new Padding(3);
+            tabPagePasswordGenerator.Size = new Size(1014, 450);
+            tabPagePasswordGenerator.TabIndex = 2;
+            tabPagePasswordGenerator.Text = "Password Generator";
+            tabPagePasswordGenerator.UseVisualStyleBackColor = true;
+            // 
+            // labelBigLetters
+            // 
+            labelBigLetters.AutoSize = true;
+            labelBigLetters.Location = new Point(6, 13);
+            labelBigLetters.Name = "labelBigLetters";
+            labelBigLetters.Size = new Size(239, 20);
+            labelBigLetters.TabIndex = 10;
+            labelBigLetters.Text = "Big Letters are mandatory ( ABC... )";
+            // 
+            // buttonGenerate
+            // 
+            buttonGenerate.Location = new Point(8, 209);
+            buttonGenerate.Name = "buttonGenerate";
+            buttonGenerate.Size = new Size(198, 45);
+            buttonGenerate.TabIndex = 9;
+            buttonGenerate.Text = "Generate Password";
+            buttonGenerate.UseVisualStyleBackColor = true;
+            // 
+            // textBoxLength
+            // 
+            textBoxLength.Location = new Point(8, 176);
+            textBoxLength.Name = "textBoxLength";
+            textBoxLength.Size = new Size(198, 27);
+            textBoxLength.TabIndex = 8;
+            textBoxLength.Text = "20";
+            // 
+            // labelLength
+            // 
+            labelLength.AutoSize = true;
+            labelLength.Location = new Point(8, 153);
+            labelLength.Name = "labelLength";
+            labelLength.Size = new Size(140, 20);
+            labelLength.TabIndex = 7;
+            labelLength.Text = "Length of Password:";
+            // 
+            // checkBoxSpecialCharacters
+            // 
+            checkBoxSpecialCharacters.AutoSize = true;
+            checkBoxSpecialCharacters.Location = new Point(8, 126);
+            checkBoxSpecialCharacters.Name = "checkBoxSpecialCharacters";
+            checkBoxSpecialCharacters.Size = new Size(214, 24);
+            checkBoxSpecialCharacters.TabIndex = 5;
+            checkBoxSpecialCharacters.Text = "Special Characters ( !@#... ) ";
+            checkBoxSpecialCharacters.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSpecialBrackets
+            // 
+            checkBoxSpecialBrackets.AutoSize = true;
+            checkBoxSpecialBrackets.Location = new Point(8, 96);
+            checkBoxSpecialBrackets.Name = "checkBoxSpecialBrackets";
+            checkBoxSpecialBrackets.Size = new Size(138, 24);
+            checkBoxSpecialBrackets.TabIndex = 4;
+            checkBoxSpecialBrackets.Text = "Brackets ( []{}() )";
+            checkBoxSpecialBrackets.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxNumbers
+            // 
+            checkBoxNumbers.AutoSize = true;
+            checkBoxNumbers.Checked = true;
+            checkBoxNumbers.CheckState = CheckState.Checked;
+            checkBoxNumbers.Location = new Point(8, 66);
+            checkBoxNumbers.Name = "checkBoxNumbers";
+            checkBoxNumbers.Size = new Size(146, 24);
+            checkBoxNumbers.TabIndex = 3;
+            checkBoxNumbers.Text = "Numbers ( 012... )";
+            checkBoxNumbers.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxSmallLetters
+            // 
+            checkBoxSmallLetters.AutoSize = true;
+            checkBoxSmallLetters.Checked = true;
+            checkBoxSmallLetters.CheckState = CheckState.Checked;
+            checkBoxSmallLetters.Location = new Point(8, 36);
+            checkBoxSmallLetters.Name = "checkBoxSmallLetters";
+            checkBoxSmallLetters.Size = new Size(168, 24);
+            checkBoxSmallLetters.TabIndex = 2;
+            checkBoxSmallLetters.Text = "Small Letters ( abc.. )";
+            checkBoxSmallLetters.UseVisualStyleBackColor = true;
             // 
             // EntryView
             // 
@@ -310,6 +418,8 @@
             EntryList.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEntries).EndInit();
             tabPageEntriesOperations.ResumeLayout(false);
+            tabPagePasswordGenerator.ResumeLayout(false);
+            tabPagePasswordGenerator.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -338,5 +448,14 @@
         private Button buttonDelete;
         private Button buttonEdit;
         private Button buttonAdd;
+        private TabPage tabPagePasswordGenerator;
+        private CheckBox checkBoxSmallLetters;
+        private CheckBox checkBoxNumbers;
+        private CheckBox checkBoxSpecialBrackets;
+        private CheckBox checkBoxSpecialCharacters;
+        private Label labelLength;
+        private TextBox textBoxLength;
+        private Button buttonGenerate;
+        private Label labelBigLetters;
     }
 }

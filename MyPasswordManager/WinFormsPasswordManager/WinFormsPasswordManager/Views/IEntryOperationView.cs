@@ -1,6 +1,7 @@
 ﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,7 +20,14 @@ namespace WinFormsPasswordManager.Views
         public bool IsEdit {  get; set; }
         //public bool SearchByNameOrTitle { get; set; }
 
-        
+       
+        public bool SmallLetters { get; }
+        public bool Numbers { get; }
+        public bool SpecialCharacters { get; }
+        public bool Brackets { get; }
+        public string LengthOfPassword { get ; set; }
+
+
 
         event EventHandler SearchEvent;
         event EventHandler DeleteEvent;
@@ -27,6 +35,7 @@ namespace WinFormsPasswordManager.Views
         event EventHandler CreateEvent;
         event EventHandler SaveEvent;
         event EventHandler PasswordGenerateEvent;
+        event EventHandler AdvancedPasswordGenerateEvent;
 
         void SetEntryListBindingSource(BindingSource entryList);
         
