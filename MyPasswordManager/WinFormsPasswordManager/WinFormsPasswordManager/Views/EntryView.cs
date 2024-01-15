@@ -93,6 +93,12 @@ namespace WinFormsPasswordManager.Views
                 tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
                 tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
             };
+            buttonCancelPasswordGenerator.Click += delegate
+            {
+                CancelPasswordManagerEvent?.Invoke(this, EventArgs.Empty);
+                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
+            };
         }
 
         public string EntryTitle { get => textBoxTitle.Text; set => textBoxTitle.Text = value; }
@@ -120,6 +126,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler PasswordGenerateEvent;
         public event EventHandler AdvancedPasswordGenerateEvent;
         public event EventHandler CancelEntryDetailsEvent;
+        public event EventHandler CancelPasswordManagerEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {
