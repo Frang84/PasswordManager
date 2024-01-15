@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             Entries = new Label();
             panel1 = new Panel();
             tabPageEntryDetails = new TabPage();
@@ -61,6 +61,8 @@
             checkBoxSpecialBrackets = new CheckBox();
             checkBoxNumbers = new CheckBox();
             checkBoxSmallLetters = new CheckBox();
+            buttonCancelEntryDetails = new Button();
+            buttonCancelPasswordGenerator = new Button();
             panel1.SuspendLayout();
             tabPageEntryDetails.SuspendLayout();
             EntryList.SuspendLayout();
@@ -90,6 +92,7 @@
             // 
             // tabPageEntryDetails
             // 
+            tabPageEntryDetails.Controls.Add(buttonCancelEntryDetails);
             tabPageEntryDetails.Controls.Add(buttonGeneratePassword);
             tabPageEntryDetails.Controls.Add(buttonSave);
             tabPageEntryDetails.Controls.Add(textBoxNotes);
@@ -273,14 +276,14 @@
             dataGridViewEntries.AllowUserToAddRows = false;
             dataGridViewEntries.AllowUserToDeleteRows = false;
             dataGridViewEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEntries.Dock = DockStyle.Bottom;
             dataGridViewEntries.Location = new Point(3, 81);
@@ -306,6 +309,7 @@
             // 
             // tabPagePasswordGenerator
             // 
+            tabPagePasswordGenerator.Controls.Add(buttonCancelPasswordGenerator);
             tabPagePasswordGenerator.Controls.Add(labelBigLetters);
             tabPagePasswordGenerator.Controls.Add(buttonGenerate);
             tabPagePasswordGenerator.Controls.Add(textBoxLength);
@@ -401,6 +405,24 @@
             checkBoxSmallLetters.Text = "Small Letters ( abc.. )";
             checkBoxSmallLetters.UseVisualStyleBackColor = true;
             // 
+            // buttonCancelEntryDetails
+            // 
+            buttonCancelEntryDetails.Location = new Point(157, 413);
+            buttonCancelEntryDetails.Name = "buttonCancelEntryDetails";
+            buttonCancelEntryDetails.Size = new Size(148, 29);
+            buttonCancelEntryDetails.TabIndex = 12;
+            buttonCancelEntryDetails.Text = "Cancel";
+            buttonCancelEntryDetails.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancelPasswordGenerator
+            // 
+            buttonCancelPasswordGenerator.Location = new Point(8, 260);
+            buttonCancelPasswordGenerator.Name = "buttonCancelPasswordGenerator";
+            buttonCancelPasswordGenerator.Size = new Size(198, 45);
+            buttonCancelPasswordGenerator.TabIndex = 11;
+            buttonCancelPasswordGenerator.Text = "Cancel";
+            buttonCancelPasswordGenerator.UseVisualStyleBackColor = true;
+            // 
             // EntryView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -457,5 +479,7 @@
         private TextBox textBoxLength;
         private Button buttonGenerate;
         private Label labelBigLetters;
+        private Button buttonCancelEntryDetails;
+        private Button buttonCancelPasswordGenerator;
     }
 }

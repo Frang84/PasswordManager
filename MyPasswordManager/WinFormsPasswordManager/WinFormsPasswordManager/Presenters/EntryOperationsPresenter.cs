@@ -27,6 +27,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.SearchEvent += Search;
             this._entryOperationView.PasswordGenerateEvent += GeneratePassword;
             this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
+            this._entryOperationView.CancelEntryDetailsEvent += Cancel;
 
 
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
@@ -133,6 +134,10 @@ namespace WinFormsPasswordManager.Presenters
                 this._entryOperationView.Message = "title, password and name are mandatory";
             }
             
+            CleanViewFields();
+        }
+        private void Cancel(object sender, EventArgs e)
+        {
             CleanViewFields();
         }
         private void CleanViewFields()

@@ -39,6 +39,7 @@ namespace WinFormsPasswordManager.Models
                     result.Title = entry.Title;
                     result.UserName = entry.UserName;
                     result.DateOfLastChange = DateTime.Now;
+                    result.Password = entry.Password;
                     result.Notes = entry.Notes;
                     contex.SaveChanges();
                 }

@@ -54,7 +54,7 @@ namespace WinFormsPasswordManager.Views
                 PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
                 tabPageEntriesOperations.TabPages.Remove(EntryList);
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
-                tabPageEntriesOperations.TabPages.Add(tabPagePasswordGenerator);
+                //tabPageEntriesOperations.TabPages.Add(tabPagePasswordGenerator);
             };
             buttonDelete.Click += delegate
             {
@@ -74,9 +74,24 @@ namespace WinFormsPasswordManager.Views
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
                 EditEvent?.Invoke(this, EventArgs.Empty);
             };
+            buttonGeneratePassword.Click += delegate
+            {
+                tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
+                tabPageEntriesOperations.TabPages.Add(tabPagePasswordGenerator);
+                PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
+            };
             buttonGenerate.Click += delegate
             {
                 AdvancedPasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
+                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
+            };
+            buttonCancelEntryDetails.Click += delegate
+            {
+                CancelEntryDetailsEvent?.Invoke(this, EventArgs.Empty);
+                tabPageEntriesOperations.TabPages.Add(EntryList);
+                tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
+                tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
             };
         }
 
@@ -104,6 +119,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler SaveEvent;
         public event EventHandler PasswordGenerateEvent;
         public event EventHandler AdvancedPasswordGenerateEvent;
+        public event EventHandler CancelEntryDetailsEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {
