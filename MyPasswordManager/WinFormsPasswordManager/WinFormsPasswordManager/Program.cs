@@ -14,9 +14,9 @@ namespace WinFormsPasswordManager
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            
-            
-            
+
+            IPasswordIBuilder passwordIBuilder = new PasswordGenerator();
+            Director director = new Director(passwordIBuilder);
             EntryOperation entryOperation = new EntryOperation();
             EntryView view = new EntryView();
             EntryOperationsPresenter presenter = new EntryOperationsPresenter(view, entryOperation);

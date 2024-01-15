@@ -14,7 +14,7 @@ namespace WinFormsPasswordManager.Models
         private string _symbolPool;
         private readonly string _smallLetters;
         
-        PasswordGenerator()
+        public PasswordGenerator()
         {
             _password = string.Empty;
             _symbolPool = string.Empty;
@@ -52,6 +52,13 @@ namespace WinFormsPasswordManager.Models
                 _symbolPool += "!@#$%^&*";
             }
         }
+        public void AddBrackets(bool make)
+        {
+            if (make)
+            {
+                _symbolPool += "()[]{}";
+            }
+        }
 
         public void SetLength(int length)
         {
@@ -75,7 +82,10 @@ namespace WinFormsPasswordManager.Models
         }
         public string GetResult()
         {
-            return _password;
+            string result = new string(_password);
+            Reset();
+            return result;
         }
+
     }
 }

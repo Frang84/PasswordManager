@@ -13,6 +13,9 @@ namespace WinFormsPasswordManager.Models
         public void AddNumbers(bool make);
         public void SetLength(int length);
         public void AddSpecialCharacters(bool make);
+        public void AddBrackets(bool make);
+        public void Generate();
+        public string GetResult();
         
     }
 }

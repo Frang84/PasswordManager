@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             Entries = new Label();
             panel1 = new Panel();
             tabPageEntryDetails = new TabPage();
@@ -102,7 +102,7 @@
             // 
             // buttonGeneratePassword
             // 
-            buttonGeneratePassword.Location = new Point(851, 153);
+            buttonGeneratePassword.Location = new Point(855, 87);
             buttonGeneratePassword.Name = "buttonGeneratePassword";
             buttonGeneratePassword.Size = new Size(153, 29);
             buttonGeneratePassword.TabIndex = 11;
@@ -111,7 +111,7 @@
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(11, 292);
+            buttonSave.Location = new Point(3, 413);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(148, 29);
             buttonSave.TabIndex = 10;
@@ -120,15 +120,16 @@
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(6, 259);
+            textBoxNotes.Location = new Point(10, 193);
+            textBoxNotes.Multiline = true;
             textBoxNotes.Name = "textBoxNotes";
-            textBoxNotes.Size = new Size(998, 27);
+            textBoxNotes.Size = new Size(998, 214);
             textBoxNotes.TabIndex = 9;
             // 
             // labelNotes
             // 
             labelNotes.AutoSize = true;
-            labelNotes.Location = new Point(8, 236);
+            labelNotes.Location = new Point(12, 170);
             labelNotes.Name = "labelNotes";
             labelNotes.Size = new Size(51, 20);
             labelNotes.TabIndex = 8;
@@ -136,7 +137,7 @@
             // 
             // textBoxUrl
             // 
-            textBoxUrl.Location = new Point(6, 206);
+            textBoxUrl.Location = new Point(10, 140);
             textBoxUrl.Name = "textBoxUrl";
             textBoxUrl.Size = new Size(998, 27);
             textBoxUrl.TabIndex = 7;
@@ -144,7 +145,7 @@
             // labelUrl
             // 
             labelUrl.AutoSize = true;
-            labelUrl.Location = new Point(6, 183);
+            labelUrl.Location = new Point(10, 117);
             labelUrl.Name = "labelUrl";
             labelUrl.Size = new Size(38, 20);
             labelUrl.TabIndex = 6;
@@ -152,7 +153,7 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(496, 100);
+            textBoxName.Location = new Point(500, 34);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(508, 27);
             textBoxName.TabIndex = 3;
@@ -160,7 +161,7 @@
             // labelName
             // 
             labelName.AutoSize = true;
-            labelName.Location = new Point(496, 77);
+            labelName.Location = new Point(500, 11);
             labelName.Name = "labelName";
             labelName.Size = new Size(52, 20);
             labelName.TabIndex = 2;
@@ -168,7 +169,7 @@
             // 
             // textBoxPassword
             // 
-            textBoxPassword.Location = new Point(6, 153);
+            textBoxPassword.Location = new Point(10, 87);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.Size = new Size(839, 27);
             textBoxPassword.TabIndex = 5;
@@ -176,7 +177,7 @@
             // labelPassword
             // 
             labelPassword.AutoSize = true;
-            labelPassword.Location = new Point(6, 130);
+            labelPassword.Location = new Point(10, 64);
             labelPassword.Name = "labelPassword";
             labelPassword.Size = new Size(77, 20);
             labelPassword.TabIndex = 4;
@@ -184,7 +185,7 @@
             // 
             // textBoxTitle
             // 
-            textBoxTitle.Location = new Point(6, 100);
+            textBoxTitle.Location = new Point(10, 34);
             textBoxTitle.Name = "textBoxTitle";
             textBoxTitle.Size = new Size(484, 27);
             textBoxTitle.TabIndex = 1;
@@ -192,7 +193,7 @@
             // labelTitle
             // 
             labelTitle.AutoSize = true;
-            labelTitle.Location = new Point(6, 77);
+            labelTitle.Location = new Point(10, 11);
             labelTitle.Name = "labelTitle";
             labelTitle.Size = new Size(41, 20);
             labelTitle.TabIndex = 0;
@@ -262,14 +263,14 @@
             dataGridViewEntries.AllowUserToAddRows = false;
             dataGridViewEntries.AllowUserToDeleteRows = false;
             dataGridViewEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridViewEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEntries.Dock = DockStyle.Bottom;
             dataGridViewEntries.Location = new Point(3, 81);

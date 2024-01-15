@@ -21,13 +21,9 @@ namespace WinFormsPasswordManager.Models
             _entryList = new List<Entry>();
         }
         
-        public EntryOperation(List<Entry> entryList)
+        public EntryOperation(Director passwordGenerator, ISearchEngine searchEngine)
         {
-            _entryList = entryList;
-        }
-        public EntryOperation(List<Entry> entryList,Director passwordGenerator, ISearchEngine searchEngine)
-        {
-            _entryList = entryList;
+            _entryList = new List<Entry>();
             _passwordGenerator = passwordGenerator;
             _searchEngine = searchEngine;
 

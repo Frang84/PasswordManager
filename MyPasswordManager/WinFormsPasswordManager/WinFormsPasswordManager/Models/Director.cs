@@ -14,6 +14,7 @@ namespace WinFormsPasswordManager.Models
         private int _length;
         private bool _specialCharacters;
         private bool _smallLettres;
+        private bool _brackets;
         public Director(IPasswordIBuilder builder)
         {
             _builder = builder;
@@ -25,7 +26,13 @@ namespace WinFormsPasswordManager.Models
 
         public string GenerateBasicPassword()
         {
-            return null;
+            _builder.AddBigLetters(true);
+            _builder.AddSmallLetters(true);
+            _builder.AddNumbers(true);
+            _builder.AddSpecialCharacters(false);
+            _builder.Generate();
+            string result = _builder.GetResult();
+            return result;
         }
         public string GenerateAdvancedPassword()
         {
