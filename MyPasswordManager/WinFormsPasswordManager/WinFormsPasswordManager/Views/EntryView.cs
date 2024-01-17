@@ -17,6 +17,8 @@ namespace WinFormsPasswordManager.Views
         private string _message;
         private bool _isEdit;
         private long _id;
+        private string _databasePath;
+
 
         public EntryView()
         {
@@ -99,6 +101,17 @@ namespace WinFormsPasswordManager.Views
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
                 tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
             };
+            openToolStripMenuItem.Click += delegate
+            {
+                var openFileDialog = new OpenFileDialog();
+                openFileDialog.Title = "Select database";
+                openFileDialog.InitialDirectory = @"C:\";
+                openFileDialog.Filter = "All Files (*.*)|*.*|Database File (*.db)|*.db";
+                openFileDialog.FilterIndex = 1;
+                openFileDialog.ShowDialog();
+                DatabasePath = openFileDialog.FileName;
+                OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
+            };
         }
 
         public string EntryTitle { get => textBoxTitle.Text; set => textBoxTitle.Text = value; }
@@ -116,7 +129,7 @@ namespace WinFormsPasswordManager.Views
         public bool SpecialCharacters { get => checkBoxSpecialCharacters.Checked; }
         public bool Brackets { get => checkBoxSpecialBrackets.Checked; }
         public string LengthOfPassword { get => textBoxLength.Text; set => textBoxLength.Text = value; }
-
+        public string DatabasePath { get => _databasePath; set => _databasePath = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
@@ -127,6 +140,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler AdvancedPasswordGenerateEvent;
         public event EventHandler CancelEntryDetailsEvent;
         public event EventHandler CancelPasswordManagerEvent;
+        public event EventHandler OpenDatabaseEvent;
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {

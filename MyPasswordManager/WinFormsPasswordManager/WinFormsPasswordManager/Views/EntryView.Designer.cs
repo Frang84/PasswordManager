@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            Entries = new Label();
-            panel1 = new Panel();
             tabPageEntryDetails = new TabPage();
+            buttonCancelEntryDetails = new Button();
             buttonGeneratePassword = new Button();
             buttonSave = new Button();
             textBoxNotes = new TextBox();
@@ -53,6 +52,7 @@
             dataGridViewEntries = new DataGridView();
             tabPageEntriesOperations = new TabControl();
             tabPagePasswordGenerator = new TabPage();
+            buttonCancelPasswordGenerator = new Button();
             labelBigLetters = new Label();
             buttonGenerate = new Button();
             textBoxLength = new TextBox();
@@ -61,34 +61,18 @@
             checkBoxSpecialBrackets = new CheckBox();
             checkBoxNumbers = new CheckBox();
             checkBoxSmallLetters = new CheckBox();
-            buttonCancelEntryDetails = new Button();
-            buttonCancelPasswordGenerator = new Button();
-            panel1.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            openToolStripMenuItem = new ToolStripMenuItem();
+            newToolStripMenuItem = new ToolStripMenuItem();
+            closeToolStripMenuItem = new ToolStripMenuItem();
             tabPageEntryDetails.SuspendLayout();
             EntryList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewEntries).BeginInit();
             tabPageEntriesOperations.SuspendLayout();
             tabPagePasswordGenerator.SuspendLayout();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
-            // 
-            // Entries
-            // 
-            Entries.AutoSize = true;
-            Entries.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Entries.Location = new Point(26, 9);
-            Entries.Name = "Entries";
-            Entries.Size = new Size(70, 28);
-            Entries.TabIndex = 0;
-            Entries.Text = "Entries";
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(Entries);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1022, 55);
-            panel1.TabIndex = 1;
             // 
             // tabPageEntryDetails
             // 
@@ -112,6 +96,15 @@
             tabPageEntryDetails.TabIndex = 1;
             tabPageEntryDetails.Text = "Entry Details";
             tabPageEntryDetails.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancelEntryDetails
+            // 
+            buttonCancelEntryDetails.Location = new Point(157, 413);
+            buttonCancelEntryDetails.Name = "buttonCancelEntryDetails";
+            buttonCancelEntryDetails.Size = new Size(148, 29);
+            buttonCancelEntryDetails.TabIndex = 12;
+            buttonCancelEntryDetails.Text = "Cancel";
+            buttonCancelEntryDetails.UseVisualStyleBackColor = true;
             // 
             // buttonGeneratePassword
             // 
@@ -300,7 +293,7 @@
             tabPageEntriesOperations.Controls.Add(EntryList);
             tabPageEntriesOperations.Controls.Add(tabPageEntryDetails);
             tabPageEntriesOperations.Controls.Add(tabPagePasswordGenerator);
-            tabPageEntriesOperations.Dock = DockStyle.Fill;
+            tabPageEntriesOperations.Dock = DockStyle.Bottom;
             tabPageEntriesOperations.Location = new Point(0, 55);
             tabPageEntriesOperations.Name = "tabPageEntriesOperations";
             tabPageEntriesOperations.SelectedIndex = 0;
@@ -325,6 +318,15 @@
             tabPagePasswordGenerator.TabIndex = 2;
             tabPagePasswordGenerator.Text = "Password Generator";
             tabPagePasswordGenerator.UseVisualStyleBackColor = true;
+            // 
+            // buttonCancelPasswordGenerator
+            // 
+            buttonCancelPasswordGenerator.Location = new Point(8, 260);
+            buttonCancelPasswordGenerator.Name = "buttonCancelPasswordGenerator";
+            buttonCancelPasswordGenerator.Size = new Size(198, 45);
+            buttonCancelPasswordGenerator.TabIndex = 11;
+            buttonCancelPasswordGenerator.Text = "Cancel";
+            buttonCancelPasswordGenerator.UseVisualStyleBackColor = true;
             // 
             // labelBigLetters
             // 
@@ -405,23 +407,40 @@
             checkBoxSmallLetters.Text = "Small Letters ( abc.. )";
             checkBoxSmallLetters.UseVisualStyleBackColor = true;
             // 
-            // buttonCancelEntryDetails
+            // menuStrip1
             // 
-            buttonCancelEntryDetails.Location = new Point(157, 413);
-            buttonCancelEntryDetails.Name = "buttonCancelEntryDetails";
-            buttonCancelEntryDetails.Size = new Size(148, 29);
-            buttonCancelEntryDetails.TabIndex = 12;
-            buttonCancelEntryDetails.Text = "Cancel";
-            buttonCancelEntryDetails.UseVisualStyleBackColor = true;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1022, 28);
+            menuStrip1.TabIndex = 3;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // buttonCancelPasswordGenerator
+            // fileToolStripMenuItem
             // 
-            buttonCancelPasswordGenerator.Location = new Point(8, 260);
-            buttonCancelPasswordGenerator.Name = "buttonCancelPasswordGenerator";
-            buttonCancelPasswordGenerator.Size = new Size(198, 45);
-            buttonCancelPasswordGenerator.TabIndex = 11;
-            buttonCancelPasswordGenerator.Text = "Cancel";
-            buttonCancelPasswordGenerator.UseVisualStyleBackColor = true;
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openToolStripMenuItem, newToolStripMenuItem, closeToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(46, 24);
+            fileToolStripMenuItem.Text = "File";
+            // 
+            // openToolStripMenuItem
+            // 
+            openToolStripMenuItem.Name = "openToolStripMenuItem";
+            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Text = "Open";
+            // 
+            // newToolStripMenuItem
+            // 
+            newToolStripMenuItem.Name = "newToolStripMenuItem";
+            newToolStripMenuItem.Size = new Size(224, 26);
+            newToolStripMenuItem.Text = "New ";
+            // 
+            // closeToolStripMenuItem
+            // 
+            closeToolStripMenuItem.Name = "closeToolStripMenuItem";
+            closeToolStripMenuItem.Size = new Size(224, 26);
+            closeToolStripMenuItem.Text = "E&xit";
             // 
             // EntryView
             // 
@@ -429,11 +448,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1022, 538);
             Controls.Add(tabPageEntriesOperations);
-            Controls.Add(panel1);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "EntryView";
-            Text = "EntryView";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            Text = "PasswordManager";
             tabPageEntryDetails.ResumeLayout(false);
             tabPageEntryDetails.PerformLayout();
             EntryList.ResumeLayout(false);
@@ -442,13 +460,13 @@
             tabPageEntriesOperations.ResumeLayout(false);
             tabPagePasswordGenerator.ResumeLayout(false);
             tabPagePasswordGenerator.PerformLayout();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Label Entries;
-        private Panel panel1;
         private TabPage tabPageEntryDetails;
         private TabPage EntryList;
         private Button SearchButton;
@@ -481,5 +499,10 @@
         private Label labelBigLetters;
         private Button buttonCancelEntryDetails;
         private Button buttonCancelPasswordGenerator;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem newToolStripMenuItem;
+        private ToolStripMenuItem closeToolStripMenuItem;
     }
 }

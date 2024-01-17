@@ -26,7 +26,7 @@ namespace WinFormsPasswordManager.Views
         public bool SpecialCharacters { get; }
         public bool Brackets { get; }
         public string LengthOfPassword { get ; set; }
-
+        public string DatabasePath {  get; set; }
 
 
         event EventHandler SearchEvent;
@@ -38,6 +38,7 @@ namespace WinFormsPasswordManager.Views
         event EventHandler AdvancedPasswordGenerateEvent;
         event EventHandler CancelEntryDetailsEvent;
         event EventHandler CancelPasswordManagerEvent;
+        event EventHandler OpenDatabaseEvent;
 
         void SetEntryListBindingSource(BindingSource entryList);
         

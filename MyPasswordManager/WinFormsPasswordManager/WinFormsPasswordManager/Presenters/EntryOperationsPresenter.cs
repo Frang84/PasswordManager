@@ -29,6 +29,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
             this._entryOperationView.CancelPasswordManagerEvent += Cancel;
+            this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
 
 
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
@@ -147,6 +148,10 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperationView.EntryPassword = string.Empty;
             _entryOperationView.EntryTitle = string.Empty;
             _entryOperationView.EntryUrl = string.Empty;
+        }
+        private void OpenDatabase(object sender, EventArgs e)
+        {
+
         }
     }
 }
