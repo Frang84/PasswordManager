@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using WinFormsPasswordManager.Views;
 using WinFormsPasswordManager.Models;
 using System.Drawing.Text;
+using WinFormsPasswordManager.Repository;
+using System.Linq.Expressions;
+
 
 namespace WinFormsPasswordManager.Presenters
 {
@@ -151,7 +154,20 @@ namespace WinFormsPasswordManager.Presenters
         }
         private void OpenDatabase(object sender, EventArgs e)
         {
-
+            string connectionString = string.Format("Data Source={0}",_entryOperationView.DatabasePath);
+            try
+            {
+                SqliteHelper helper = new SqliteHelper(connectionString);
+                if (helper.IsConnection)
+                {
+                    AppSetting setting = new AppSetting();
+                    setting.SaveConnectionString("MyKey", connectionString);
+                }
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

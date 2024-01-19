@@ -28,6 +28,8 @@ namespace WinFormsPasswordManager.Views
             tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
         }
 
+
+
         private void AssociateAndRaiseViewEvents()
         {
             SearchButton.Click += delegate
@@ -112,6 +114,7 @@ namespace WinFormsPasswordManager.Views
                 DatabasePath = openFileDialog.FileName;
                 OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
             };
+        
         }
 
         public string EntryTitle { get => textBoxTitle.Text; set => textBoxTitle.Text = value; }
@@ -141,6 +144,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler CancelEntryDetailsEvent;
         public event EventHandler CancelPasswordManagerEvent;
         public event EventHandler OpenDatabaseEvent;
+
 
         public void SetEntryListBindingSource(BindingSource entryList)
         {
