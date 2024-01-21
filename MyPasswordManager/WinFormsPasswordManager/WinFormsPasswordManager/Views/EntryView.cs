@@ -12,10 +12,10 @@ using WinFormsPasswordManager.Models;
 
 namespace WinFormsPasswordManager.Views
 {
-    enum Search
+    enum SearchEnum
     {
-        Name,
-        Title
+        Name = 1,
+        Title = 2
     }
     public partial class EntryView : Form, IEntryOperationView
     {
@@ -37,8 +37,12 @@ namespace WinFormsPasswordManager.Views
 
         private void SetComboBox()
         {
+            //comboBoxSearchBy.SelectedIndex = 0;
+            List<SearchEnum> searchVal = new List<SearchEnum>();
+            searchVal.Add(SearchEnum.Name);
+            searchVal.Add(SearchEnum.Title);
+            comboBoxSearchBy.DataSource = searchVal;
             comboBoxSearchBy.SelectedIndex = 0;
-            //comboBoxSearchBy.DataSource = Search.Name;
         }
 
         private void AssociateAndRaiseViewEvents()

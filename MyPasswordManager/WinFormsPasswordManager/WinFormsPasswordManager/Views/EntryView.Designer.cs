@@ -44,6 +44,7 @@
             textBoxTitle = new TextBox();
             labelTitle = new Label();
             EntryList = new TabPage();
+            labelSearchBy = new Label();
             comboBoxSearchBy = new ComboBox();
             buttonAdd = new Button();
             buttonEdit = new Button();
@@ -208,6 +209,7 @@
             // 
             // EntryList
             // 
+            EntryList.Controls.Add(labelSearchBy);
             EntryList.Controls.Add(comboBoxSearchBy);
             EntryList.Controls.Add(buttonAdd);
             EntryList.Controls.Add(buttonEdit);
@@ -223,11 +225,20 @@
             EntryList.Text = "Entry List";
             EntryList.UseVisualStyleBackColor = true;
             // 
+            // labelSearchBy
+            // 
+            labelSearchBy.AutoSize = true;
+            labelSearchBy.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            labelSearchBy.Location = new Point(706, 11);
+            labelSearchBy.Name = "labelSearchBy";
+            labelSearchBy.Size = new Size(88, 23);
+            labelSearchBy.TabIndex = 7;
+            labelSearchBy.Text = "Search by:";
+            // 
             // comboBoxSearchBy
             // 
             comboBoxSearchBy.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSearchBy.FormattingEnabled = true;
-            comboBoxSearchBy.Items.AddRange(new object[] { "By user name", "By title" });
             comboBoxSearchBy.Location = new Point(800, 6);
             comboBoxSearchBy.Name = "comboBoxSearchBy";
             comboBoxSearchBy.Size = new Size(206, 28);
@@ -273,7 +284,7 @@
             // 
             textBoxSearchEntry.Location = new Point(143, 6);
             textBoxSearchEntry.Name = "textBoxSearchEntry";
-            textBoxSearchEntry.Size = new Size(651, 27);
+            textBoxSearchEntry.Size = new Size(557, 27);
             textBoxSearchEntry.TabIndex = 1;
             // 
             // dataGridViewEntries
@@ -517,5 +528,6 @@
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem closeToolStripMenuItem;
         private ComboBox comboBoxSearchBy;
+        private Label labelSearchBy;
     }
 }

@@ -15,7 +15,8 @@ namespace WinFormsPasswordManager.Models
             List<Entry> entries = new List<Entry>();
             using(var contex = new EntriesContext()) 
             { 
-                 entries = contex.Entries.Where(e => e.UserName.StartsWith(userName)).ToList();
+                entries = contex.Entries.ToList();
+                entries = entries.Where(e => e.UserName.StartsWith(userName, StringComparison.CurrentCultureIgnoreCase)).ToList();
             }
             return entries;
         }

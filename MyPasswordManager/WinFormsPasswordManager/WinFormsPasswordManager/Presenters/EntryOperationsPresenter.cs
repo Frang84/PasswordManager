@@ -57,11 +57,11 @@ namespace WinFormsPasswordManager.Presenters
             else
             {
                 // this._entries = this._entryOperation.Search(this._entryOperationView.SearchValue);
-                if (_entryOperationView.SearchBy == "By user name")
+                if (_entryOperationView.SearchBy == SearchEnum.Name.ToString())
                 {
                     this._entryOperation.SetSearchEngine(new SearchUserName());
                 }
-                if (_entryOperationView.SearchBy == "By title")
+                if (_entryOperationView.SearchBy == SearchEnum.Title.ToString())
                 {
                     this._entryOperation.SetSearchEngine(new SearchTitle());
                 }
