@@ -12,6 +12,11 @@ using WinFormsPasswordManager.Models;
 
 namespace WinFormsPasswordManager.Views
 {
+    enum Search
+    {
+        Name,
+        Title
+    }
     public partial class EntryView : Form, IEntryOperationView
     {
         private string _message;
@@ -20,15 +25,21 @@ namespace WinFormsPasswordManager.Views
         private string _databasePath;
 
 
+
         public EntryView()
         {
             InitializeComponent();
             AssociateAndRaiseViewEvents();
+            SetComboBox();
             tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
             tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
         }
 
-
+        private void SetComboBox()
+        {
+            comboBoxSearchBy.SelectedIndex = 0;
+            //comboBoxSearchBy.DataSource = Search.Name;
+        }
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -114,7 +125,7 @@ namespace WinFormsPasswordManager.Views
                 DatabasePath = openFileDialog.FileName;
                 OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
             };
-        
+
         }
 
         public string EntryTitle { get => textBoxTitle.Text; set => textBoxTitle.Text = value; }
@@ -133,6 +144,7 @@ namespace WinFormsPasswordManager.Views
         public bool Brackets { get => checkBoxSpecialBrackets.Checked; }
         public string LengthOfPassword { get => textBoxLength.Text; set => textBoxLength.Text = value; }
         public string DatabasePath { get => _databasePath; set => _databasePath = value; }
+        public string SearchBy { get => comboBoxSearchBy.Text; }
 
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
@@ -144,6 +156,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler CancelEntryDetailsEvent;
         public event EventHandler CancelPasswordManagerEvent;
         public event EventHandler OpenDatabaseEvent;
+
 
 
         public void SetEntryListBindingSource(BindingSource entryList)

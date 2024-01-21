@@ -4,14 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsPasswordManager.Models;
+using WinFormsPasswordManager.Repository;
 
 namespace WinFormsPasswordManager.Models
 {
     public class SearchTitle : ISearchEngine
     {
-        public List<Entry> Search()
+        public List<Entry> Search(string title)
         {
-            throw new NotImplementedException();
+            List<Entry> entries = new List<Entry>();   
+            using(var contex = new EntriesContext())
+            {
+                entries = contex.Entries.Where(e => e.Title.StartsWith(title)).ToList();
+                
+            }
+            return entries;
+
         }
     }
 }

@@ -27,7 +27,7 @@ namespace WinFormsPasswordManager.Views
         public bool Brackets { get; }
         public string LengthOfPassword { get ; set; }
         public string DatabasePath {  get; set; }
-
+        public string SearchBy { get; }
 
         event EventHandler SearchEvent;
         event EventHandler DeleteEvent;

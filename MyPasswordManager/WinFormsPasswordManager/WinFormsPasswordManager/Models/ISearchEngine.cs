@@ -9,6 +9,6 @@ namespace WinFormsPasswordManager.Models
 {
     public interface ISearchEngine
     {
-        public List<Entry> Search();
+        public List<Entry> Search(string searchValue);
     }
 }

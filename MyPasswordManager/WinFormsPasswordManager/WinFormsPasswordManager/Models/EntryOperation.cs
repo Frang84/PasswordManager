@@ -12,7 +12,7 @@ namespace WinFormsPasswordManager.Models
 {
     public class EntryOperation
     {
-        private ISearchEngine _searchEngine;
+        public ISearchEngine _searchEngine;
         public Director _passwordGenerator;
         private List<Entry> _entryList;
 
@@ -80,6 +80,10 @@ namespace WinFormsPasswordManager.Models
                 result = context.Entries.ToList();
             }
             return result;
+        }
+        public void SetSearchEngine(ISearchEngine searchEngine)
+        {
+            this._searchEngine = searchEngine;
         }
     }
 }

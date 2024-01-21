@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tabPageEntryDetails = new TabPage();
             buttonCancelEntryDetails = new Button();
             buttonGeneratePassword = new Button();
@@ -44,6 +44,7 @@
             textBoxTitle = new TextBox();
             labelTitle = new Label();
             EntryList = new TabPage();
+            comboBoxSearchBy = new ComboBox();
             buttonAdd = new Button();
             buttonEdit = new Button();
             buttonDelete = new Button();
@@ -207,6 +208,7 @@
             // 
             // EntryList
             // 
+            EntryList.Controls.Add(comboBoxSearchBy);
             EntryList.Controls.Add(buttonAdd);
             EntryList.Controls.Add(buttonEdit);
             EntryList.Controls.Add(buttonDelete);
@@ -220,6 +222,16 @@
             EntryList.TabIndex = 0;
             EntryList.Text = "Entry List";
             EntryList.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxSearchBy
+            // 
+            comboBoxSearchBy.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxSearchBy.FormattingEnabled = true;
+            comboBoxSearchBy.Items.AddRange(new object[] { "By user name", "By title" });
+            comboBoxSearchBy.Location = new Point(800, 6);
+            comboBoxSearchBy.Name = "comboBoxSearchBy";
+            comboBoxSearchBy.Size = new Size(206, 28);
+            comboBoxSearchBy.TabIndex = 6;
             // 
             // buttonAdd
             // 
@@ -261,7 +273,7 @@
             // 
             textBoxSearchEntry.Location = new Point(143, 6);
             textBoxSearchEntry.Name = "textBoxSearchEntry";
-            textBoxSearchEntry.Size = new Size(811, 27);
+            textBoxSearchEntry.Size = new Size(651, 27);
             textBoxSearchEntry.TabIndex = 1;
             // 
             // dataGridViewEntries
@@ -269,14 +281,14 @@
             dataGridViewEntries.AllowUserToAddRows = false;
             dataGridViewEntries.AllowUserToDeleteRows = false;
             dataGridViewEntries.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewEntries.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewEntries.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewEntries.Dock = DockStyle.Bottom;
             dataGridViewEntries.Location = new Point(3, 81);
@@ -427,19 +439,19 @@
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new Size(224, 26);
+            openToolStripMenuItem.Size = new Size(128, 26);
             openToolStripMenuItem.Text = "Open";
             // 
             // newToolStripMenuItem
             // 
             newToolStripMenuItem.Name = "newToolStripMenuItem";
-            newToolStripMenuItem.Size = new Size(224, 26);
+            newToolStripMenuItem.Size = new Size(128, 26);
             newToolStripMenuItem.Text = "New ";
             // 
             // closeToolStripMenuItem
             // 
             closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            closeToolStripMenuItem.Size = new Size(224, 26);
+            closeToolStripMenuItem.Size = new Size(128, 26);
             closeToolStripMenuItem.Text = "E&xit";
             // 
             // EntryView
@@ -504,5 +516,6 @@
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
         private ToolStripMenuItem closeToolStripMenuItem;
+        private ComboBox comboBoxSearchBy;
     }
 }

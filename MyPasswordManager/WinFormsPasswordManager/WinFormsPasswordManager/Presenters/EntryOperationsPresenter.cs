@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 
 namespace WinFormsPasswordManager.Presenters
 {
+
     public class EntryOperationsPresenter
     {
         private IEntryOperationView _entryOperationView;
@@ -55,7 +56,16 @@ namespace WinFormsPasswordManager.Presenters
             }
             else
             {
-                this._entries = this._entryOperation.Search(this._entryOperationView.SearchValue);
+                // this._entries = this._entryOperation.Search(this._entryOperationView.SearchValue);
+                if (_entryOperationView.SearchBy == "By user name")
+                {
+                    this._entryOperation.SetSearchEngine(new SearchUserName());
+                }
+                if (_entryOperationView.SearchBy == "By title")
+                {
+                    this._entryOperation.SetSearchEngine(new SearchTitle());
+                }
+                this._entries = this._entryOperation._searchEngine.Search(this._entryOperationView.SearchValue);
             }
             _entrysBindingSource.DataSource = _entries;
         }
@@ -66,7 +76,7 @@ namespace WinFormsPasswordManager.Presenters
             {
                 var entry = (Entry)_entrysBindingSource.Current;
                 this._entryOperation.Delete(entry);
-                _entryOperationView.Message = "Deleted succesfully";
+                _entryOperationView.Message = "Deleted successfully";
                 LoadAllEntriesList();
             }catch(Exception ex)
             {
