@@ -32,7 +32,6 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.PasswordGenerateEvent += GeneratePassword;
             this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
-            this._entryOperationView.CancelPasswordManagerEvent += Cancel;
             this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
 
 

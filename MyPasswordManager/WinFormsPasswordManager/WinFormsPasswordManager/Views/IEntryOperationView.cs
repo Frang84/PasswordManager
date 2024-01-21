@@ -37,7 +37,6 @@ namespace WinFormsPasswordManager.Views
         event EventHandler PasswordGenerateEvent;
         event EventHandler AdvancedPasswordGenerateEvent;
         event EventHandler CancelEntryDetailsEvent;
-        event EventHandler CancelPasswordManagerEvent;
         event EventHandler OpenDatabaseEvent;
 
 

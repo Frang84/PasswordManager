@@ -114,7 +114,6 @@ namespace WinFormsPasswordManager.Views
             };
             buttonCancelPasswordGenerator.Click += delegate
             {
-                CancelPasswordManagerEvent?.Invoke(this, EventArgs.Empty);
                 tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
                 tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
             };
@@ -158,7 +157,6 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler PasswordGenerateEvent;
         public event EventHandler AdvancedPasswordGenerateEvent;
         public event EventHandler CancelEntryDetailsEvent;
-        public event EventHandler CancelPasswordManagerEvent;
         public event EventHandler OpenDatabaseEvent;
 
 
