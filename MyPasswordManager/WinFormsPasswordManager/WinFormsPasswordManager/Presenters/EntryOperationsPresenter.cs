@@ -25,7 +25,7 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperation = entryOperation;
             _entrysBindingSource = new BindingSource();
 
-            this._entryOperationView.CreateEvent += Create;
+            this._entryOperationView.CreateEvent += Save;
             this._entryOperationView.EditEvent += Edit;
             this._entryOperationView.DeleteEvent += Delete;
             this._entryOperationView.SearchEvent += Search;
@@ -119,7 +119,7 @@ namespace WinFormsPasswordManager.Presenters
                 length);
         }
 
-        private void Create(object sender, EventArgs e)
+        private void Save(object sender, EventArgs e)
         {
             long id = _entryOperationView.Id;
             string title = _entryOperationView.EntryTitle.Trim();
@@ -160,6 +160,7 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperationView.EntryPassword = string.Empty;
             _entryOperationView.EntryTitle = string.Empty;
             _entryOperationView.EntryUrl = string.Empty;
+            _entryOperationView.EntryNotes = string.Empty;
         }
         private void OpenDatabase(object sender, EventArgs e)
         {
