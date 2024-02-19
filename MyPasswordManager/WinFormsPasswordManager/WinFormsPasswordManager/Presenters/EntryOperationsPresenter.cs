@@ -17,13 +17,16 @@ namespace WinFormsPasswordManager.Presenters
     {
         private IEntryOperationView _entryOperationView;
         private EntryOperation _entryOperation;
+        private DatabaseOperations _databaseOperations;
         private BindingSource _entrysBindingSource;
         private IEnumerable<Entry> _entries;
-        public EntryOperationsPresenter(IEntryOperationView entryOperationView, EntryOperation entryOperation)
+        public EntryOperationsPresenter(IEntryOperationView entryOperationView, EntryOperation entryOperation, DatabaseOperations databaseOperations)
         {
             _entryOperationView = entryOperationView;
             _entryOperation = entryOperation;
+            _databaseOperations = databaseOperations;
             _entrysBindingSource = new BindingSource();
+            
 
             this._entryOperationView.CreateEvent += Save;
             this._entryOperationView.EditEvent += Edit;
@@ -34,10 +37,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
             this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
 
-
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
-            LoadAllEntriesList();
-
         }
 
         private void LoadAllEntriesList()
@@ -162,22 +162,15 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperationView.EntryUrl = string.Empty;
             _entryOperationView.EntryNotes = string.Empty;
         }
-        private void OpenDatabase(object sender, EventArgs e)
+        private void OpenDatabase(object sender, EventArgs e)//przenies logike do model 
         {
             string connectionString = string.Format("Data Source={0}",_entryOperationView.DatabasePath);
-            try
-            {
-                SqliteHelper helper = new SqliteHelper(connectionString);
-                if (helper.IsConnection)
-                {
-                    AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("MyKey", connectionString);
-                }
-            }
-            catch(Exception ex) 
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            _databaseOperations.OpenDatabase(connectionString);
+            LoadAllEntriesList();
+        }
+        private void CloseProgram(object sender, EventArgs e)
+        {
+
         }
     }
 }

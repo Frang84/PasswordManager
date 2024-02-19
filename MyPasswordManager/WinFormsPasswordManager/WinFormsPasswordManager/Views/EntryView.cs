@@ -128,6 +128,10 @@ namespace WinFormsPasswordManager.Views
                 DatabasePath = openFileDialog.FileName;
                 OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
             };
+            closeToolStripMenuItem.Click += delegate
+            {
+                CloseEvent?.Invoke(this, EventArgs.Empty);
+            };
 
         }
 
@@ -158,6 +162,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler AdvancedPasswordGenerateEvent;
         public event EventHandler CancelEntryDetailsEvent;
         public event EventHandler OpenDatabaseEvent;
+        public event EventHandler CloseEvent;
 
 
 

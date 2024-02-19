@@ -24,7 +24,7 @@ namespace WinFormsPasswordManager.Models
         {
             config.ConnectionStrings.ConnectionStrings[key].ConnectionString = value;
             config.ConnectionStrings.ConnectionStrings[key].ProviderName = "System.Data.SqlClient";
-            config.Save(ConfigurationSaveMode.Modified); ;
+            config.Save(ConfigurationSaveMode.Modified); 
         }
     }
 }
