@@ -38,6 +38,7 @@ namespace WinFormsPasswordManager.Views
         event EventHandler AdvancedPasswordGenerateEvent;
         event EventHandler CancelEntryDetailsEvent;
         event EventHandler OpenDatabaseEvent;
+        event EventHandler CloseEvent;
 
 
         void SetEntryListBindingSource(BindingSource entryList);

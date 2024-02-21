@@ -131,6 +131,7 @@ namespace WinFormsPasswordManager.Views
             closeToolStripMenuItem.Click += delegate
             {
                 CloseEvent?.Invoke(this, EventArgs.Empty);
+                Close();
             };
 
         }

@@ -19,7 +19,6 @@ namespace WinFormsPasswordManager.Repository
         {
             string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
             optionsBuilder.UseSqlite(connectionString);
-            
         }
        
     }

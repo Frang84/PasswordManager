@@ -36,6 +36,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
             this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
+            this._entryOperationView.CloseEvent += CloseProgram;
 
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
         }
@@ -162,7 +163,7 @@ namespace WinFormsPasswordManager.Presenters
             _entryOperationView.EntryUrl = string.Empty;
             _entryOperationView.EntryNotes = string.Empty;
         }
-        private void OpenDatabase(object sender, EventArgs e)//przenies logike do model 
+        private void OpenDatabase(object sender, EventArgs e)
         {
             string connectionString = string.Format("Data Source={0}",_entryOperationView.DatabasePath);
             _databaseOperations.OpenDatabase(connectionString);
@@ -170,7 +171,7 @@ namespace WinFormsPasswordManager.Presenters
         }
         private void CloseProgram(object sender, EventArgs e)
         {
-
+            _databaseOperations?.ClearConnectionString();
         }
     }
 }
