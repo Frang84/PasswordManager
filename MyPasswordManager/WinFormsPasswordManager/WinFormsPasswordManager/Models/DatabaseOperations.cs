@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data.Common;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Data.SQLite;
 
 namespace WinFormsPasswordManager.Models
 {
@@ -16,34 +17,20 @@ namespace WinFormsPasswordManager.Models
         public DatabaseOperations() { }
         public void OpenDatabase(string connectionString) 
         {
-            try
-            {
-                SqliteHelper helper = new SqliteHelper(connectionString);
-                if (helper.IsConnection)
-                {
-                    AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("MyKey", connectionString);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            AppSetting setting = new AppSetting();
+            setting.SaveConnectionString("MyKey", connectionString);
         } 
         public void ClearConnectionString()
         {
-            //Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //ConnectionStringsSection connectionStringsSection = config.ConnectionStrings;
-            //connectionStringsSection.ConnectionStrings["MyKey"].ConnectionString = string.Empty;
-            //config.Save(ConfigurationSaveMode.Modified);
-            //ConfigurationManager.RefreshSection("connectionStrings");
-
             AppSetting setting = new AppSetting();
             setting.SaveConnectionString("MyKey", string.Empty);
         }
         public void CreateDatabase(string connectionString)
         {
+            // SQLiteConnection.CreateFile(connectionString);
+            OpenDatabase(connectionString);
+            using var contex = new EntriesContext();
+            contex.Database.EnsureCreated();
 
         }
     }

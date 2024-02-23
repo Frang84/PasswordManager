@@ -14,11 +14,19 @@ namespace WinFormsPasswordManager.Repository
     public class EntriesContext : DbContext
     {
         public DbSet<Entry> Entries { get; set; }
+       // private static bool _created = false;
+        //public EntriesContext()
+        //{
+        //    _created = true;
+        //    Database.EnsureDeleted();
+        //    Database.EnsureCreated();
+
+        //}
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             string connectionString = ConfigurationManager.ConnectionStrings["MyKey"].ConnectionString;
-            optionsBuilder.UseSqlite(connectionString);
+            optionsBuilder.UseSqlite(connectionString);  
         }
        
     }

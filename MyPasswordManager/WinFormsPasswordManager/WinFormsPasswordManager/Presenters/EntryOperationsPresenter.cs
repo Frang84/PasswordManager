@@ -37,6 +37,7 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
             this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
             this._entryOperationView.CloseEvent += CloseProgram;
+            this._entryOperationView.CreateDatabaseEvent += CreateDatabase;
 
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
         }
@@ -172,6 +173,11 @@ namespace WinFormsPasswordManager.Presenters
         private void CloseProgram(object sender, EventArgs e)
         {
             _databaseOperations?.ClearConnectionString();
+        }
+        private void CreateDatabase(object sender, EventArgs e)
+        {
+            _databaseOperations?.CreateDatabase(@"Data Source=C:\studia\rokIII\Vsemestr\wzorceProjektowe\Projekt\wszystko\PasswordManager\MyPasswordManager\WinFormsPasswordManager\WinFormsPasswordManager\Repository\test.db");
+            LoadAllEntriesList();
         }
     }
 }

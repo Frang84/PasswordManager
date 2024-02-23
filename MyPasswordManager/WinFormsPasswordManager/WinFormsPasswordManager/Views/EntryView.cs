@@ -133,6 +133,22 @@ namespace WinFormsPasswordManager.Views
                 CloseEvent?.Invoke(this, EventArgs.Empty);
                 Close();
             };
+            newToolStripMenuItem.Click += delegate
+            {
+                //Stream myStream;
+                //SaveFileDialog saveFileDialog = new SaveFileDialog();
+                //saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                //saveFileDialog.FilterIndex = 2;
+                //saveFileDialog.RestoreDirectory = true;
+                //if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                //{
+                //    if ((myStream = saveFileDialog.OpenFile())!=null)
+                //    {
+                //        myStream.Close();
+                //    }
+                //}
+                CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
+            };
 
         }
 
@@ -142,7 +158,6 @@ namespace WinFormsPasswordManager.Views
         public string EntryUrl { get => textBoxUrl.Text; set => textBoxUrl.Text = value; }
         public string EntryNotes { get => textBoxNotes.Text; set => textBoxNotes.Text = value; }
         public string SearchValue { get => textBoxSearchEntry.Text; set => textBoxSearchEntry.Text = value; }
-        //public bool SearchByNameOrTitle { get => ByTitleCheckBox.Checked; set => ByTitleCheckBox.Checked = value; }
         public string Message { get => _message; set => _message = value; }
         public bool IsEdit { get => _isEdit; set => _isEdit = value; }
         public long Id { get => _id; set => _id = value; }
@@ -164,7 +179,7 @@ namespace WinFormsPasswordManager.Views
         public event EventHandler CancelEntryDetailsEvent;
         public event EventHandler OpenDatabaseEvent;
         public event EventHandler CloseEvent;
-
+        public event EventHandler CreateDatabaseEvent;
 
 
         public void SetEntryListBindingSource(BindingSource entryList)
