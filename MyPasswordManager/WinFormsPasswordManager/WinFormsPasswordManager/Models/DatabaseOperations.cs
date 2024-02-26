@@ -33,5 +33,6 @@ namespace WinFormsPasswordManager.Models
             contex.Database.EnsureCreated();
 
         }
+
     }
 }

@@ -23,11 +23,21 @@ namespace WinFormsPasswordManager.Views
         private bool _isEdit;
         private long _id;
         private string _databasePath;
+        private bool _isConnection;
+       
 
 
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
 
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
+            CloseEvent?.Invoke(this, EventArgs.Empty);
+
+        }
         public EntryView()
         {
+            _isConnection = false;
             InitializeComponent();
             AssociateAndRaiseViewEvents();
             SetComboBox();
@@ -49,14 +59,28 @@ namespace WinFormsPasswordManager.Views
         {
             SearchButton.Click += delegate
             {
-                SearchEvent?.Invoke(this, EventArgs.Empty);
+                if (_isConnection)
+                {
+                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                }
+                else
+                {
+                    MessageBox.Show("Connect to a database");
+                }
 
             };
             textBoxSearchEntry.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    SearchEvent?.Invoke(this, EventArgs.Empty);
+                    if (_isConnection)
+                    {
+                        SearchEvent?.Invoke(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Connect to a database");
+                    }
                 }
 
             };
@@ -67,31 +91,59 @@ namespace WinFormsPasswordManager.Views
                 tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
                 tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
                 MessageBox.Show(_message);
+                _message = string.Empty;
             };
             buttonAdd.Click += delegate
             {
-                PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
-                tabPageEntriesOperations.TabPages.Remove(EntryList);
-                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
-                //tabPageEntriesOperations.TabPages.Add(tabPagePasswordGenerator);
+                if (_isConnection)
+                {
+                    PasswordGenerateEvent?.Invoke(this, EventArgs.Empty);
+                    tabPageEntriesOperations.TabPages.Remove(EntryList);
+                    tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                }
+                else
+                {
+                    MessageBox.Show("Connect to a database");
+                }
+
             };
             buttonDelete.Click += delegate
             {
-                var result = MessageBox.Show("Are you sure you want to delete selected entry?",
-                "Warning",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                if (!_isConnection)
                 {
-                    DeleteEvent?.Invoke(this, EventArgs.Empty);
-
+                    MessageBox.Show("Connect to a database");
                 }
+                else
+                {
+                    var result = MessageBox.Show("Are you sure you want to delete selected entry?",
+                                                "Warning",
+                                                MessageBoxButtons.YesNo,
+                                                MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    }
+                    if (!_message.Equals(string.Empty))
+                    {
+                        MessageBox.Show(_message);
+                        Message = string.Empty;
+                    }
+                }
+
             };
             buttonEdit.Click += delegate
             {
-                tabPageEntriesOperations.TabPages.Remove(EntryList);
-                tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
-                EditEvent?.Invoke(this, EventArgs.Empty);
+                if (!_isConnection)
+                {
+                    MessageBox.Show("Connect to a database");
+                }
+                else
+                {
+                    tabPageEntriesOperations.TabPages.Remove(EntryList);
+                    tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                    EditEvent?.Invoke(this, EventArgs.Empty);
+                }
+
             };
             buttonGeneratePassword.Click += delegate
             {
@@ -119,14 +171,18 @@ namespace WinFormsPasswordManager.Views
             };
             openToolStripMenuItem.Click += delegate
             {
+                
+                string path = Environment.GetLogicalDrives()[0];
                 var openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Select database";
-                openFileDialog.InitialDirectory = @"C:\";
+                //openFileDialog.InitialDirectory = @"C:\studia\rokIII\Vsemestr\wzorceProjektowe\Projekt\wszystko\PasswordManager\MyPasswordManager\WinFormsPasswordManager\WinFormsPasswordManager\Repository";
+                openFileDialog.InitialDirectory = path;
                 openFileDialog.Filter = "All Files (*.*)|*.*|Database File (*.db)|*.db";
-                openFileDialog.FilterIndex = 1;
+                openFileDialog.FilterIndex = 2;
                 openFileDialog.ShowDialog();
                 DatabasePath = openFileDialog.FileName;
                 OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
+
             };
             closeToolStripMenuItem.Click += delegate
             {
@@ -135,19 +191,18 @@ namespace WinFormsPasswordManager.Views
             };
             newToolStripMenuItem.Click += delegate
             {
-                //Stream myStream;
-                //SaveFileDialog saveFileDialog = new SaveFileDialog();
-                //saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-                //saveFileDialog.FilterIndex = 2;
-                //saveFileDialog.RestoreDirectory = true;
-                //if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                //{
-                //    if ((myStream = saveFileDialog.OpenFile())!=null)
-                //    {
-                //        myStream.Close();
-                //    }
-                //}
-                CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
+                Stream myStream;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "db files (*.db)|*.db";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DatabasePath = saveFileDialog.FileName;
+                    CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
+
+                }
+
             };
 
         }
@@ -168,6 +223,7 @@ namespace WinFormsPasswordManager.Views
         public string LengthOfPassword { get => textBoxLength.Text; set => textBoxLength.Text = value; }
         public string DatabasePath { get => _databasePath; set => _databasePath = value; }
         public string SearchBy { get => comboBoxSearchBy.Text; }
+        public bool IsConnection { get => _isConnection; set => _isConnection = value; }
 
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
