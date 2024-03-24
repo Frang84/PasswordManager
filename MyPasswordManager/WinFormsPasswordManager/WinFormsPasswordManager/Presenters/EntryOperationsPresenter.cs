@@ -17,13 +17,16 @@ namespace WinFormsPasswordManager.Presenters
     {
         private IEntryOperationView _entryOperationView;
         private EntryOperation _entryOperation;
+        private DatabaseOperations _databaseOperations;
         private BindingSource _entrysBindingSource;
         private IEnumerable<Entry> _entries;
-        public EntryOperationsPresenter(IEntryOperationView entryOperationView, EntryOperation entryOperation)
+        public EntryOperationsPresenter(IEntryOperationView entryOperationView, EntryOperation entryOperation, DatabaseOperations databaseOperations)
         {
             _entryOperationView = entryOperationView;
             _entryOperation = entryOperation;
+            _databaseOperations = databaseOperations;
             _entrysBindingSource = new BindingSource();
+            
 
             this._entryOperationView.CreateEvent += Save;
             this._entryOperationView.EditEvent += Edit;
@@ -33,11 +36,10 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.AdvancedPasswordGenerateEvent += GenerateAdvancedPassword;
             this._entryOperationView.CancelEntryDetailsEvent += Cancel;
             this._entryOperationView.OpenDatabaseEvent += OpenDatabase;
-
+            this._entryOperationView.CloseEvent += CloseProgram;
+            this._entryOperationView.CreateDatabaseEvent += CreateDatabase;
 
             this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
-            LoadAllEntriesList();
-
         }
 
         private void LoadAllEntriesList()
@@ -49,6 +51,7 @@ namespace WinFormsPasswordManager.Presenters
         private void Search(object sender, EventArgs e)
         {
             bool emptyValue = string.IsNullOrEmpty(this._entryOperationView.SearchValue);
+
             if (emptyValue)
             {
                 this._entries = this._entryOperation.GetEntries();
@@ -71,6 +74,7 @@ namespace WinFormsPasswordManager.Presenters
 
         private void Delete(object sender, EventArgs e)
         {
+
             try
             {
                 var entry = (Entry)_entrysBindingSource.Current;
@@ -97,7 +101,8 @@ namespace WinFormsPasswordManager.Presenters
         }
         private void GeneratePassword(object sender, EventArgs e)
         {
-           _entryOperationView.EntryPassword = _entryOperation._passwordGenerator.GenerateBasicPassword();
+
+            _entryOperationView.EntryPassword = _entryOperation._passwordGenerator.GenerateBasicPassword();
         }
         private void GenerateAdvancedPassword(object sender, EventArgs e)
         {
@@ -164,20 +169,33 @@ namespace WinFormsPasswordManager.Presenters
         }
         private void OpenDatabase(object sender, EventArgs e)
         {
-            string connectionString = string.Format("Data Source={0}",_entryOperationView.DatabasePath);
-            try
+            if (!Presenters.Common.DataValidation.IsConnectionStringCorrect(_entryOperationView.DatabasePath))
             {
-                SqliteHelper helper = new SqliteHelper(connectionString);
-                if (helper.IsConnection)
-                {
-                    AppSetting setting = new AppSetting();
-                    setting.SaveConnectionString("MyKey", connectionString);
-                }
+                _entryOperationView.IsConnection = false;
+                return;
             }
-            catch(Exception ex) 
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            _entryOperationView.IsConnection = true;
+            string connectionString = string.Format("Data Source={0}", _entryOperationView.DatabasePath);
+            _databaseOperations.OpenDatabase(connectionString);
+            LoadAllEntriesList();
+
         }
+        private void CloseProgram(object sender, EventArgs e)
+        {
+            _databaseOperations?.ClearConnectionString();
+        }
+        private void CreateDatabase(object sender, EventArgs e)
+        {
+            if (!Presenters.Common.DataValidation.IsConnectionStringCorrect(_entryOperationView.DatabasePath))
+            {
+                _entryOperationView.IsConnection = false;
+                return;
+            }
+            _entryOperationView.IsConnection = true;
+            string connectionString = string.Format("Data Source={0}", _entryOperationView.DatabasePath);
+            _databaseOperations?.CreateDatabase(connectionString);
+            LoadAllEntriesList();
+        }
+        
     }
 }

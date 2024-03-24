@@ -19,7 +19,9 @@ namespace WinFormsPasswordManager
             Director director = new Director(passwordIBuilder);
             EntryOperation entryOperation = new EntryOperation(director, null);
             EntryView view = new EntryView();
-            EntryOperationsPresenter presenter = new EntryOperationsPresenter(view, entryOperation);
+            DatabaseOperations databaseOperations = new DatabaseOperations();
+            EntryOperationsPresenter presenter = new EntryOperationsPresenter(view, entryOperation, databaseOperations);
+
 
             Application.Run(view);
         }

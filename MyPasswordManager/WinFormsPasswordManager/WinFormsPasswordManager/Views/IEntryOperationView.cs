@@ -28,6 +28,7 @@ namespace WinFormsPasswordManager.Views
         public string LengthOfPassword { get ; set; }
         public string DatabasePath {  get; set; }
         public string SearchBy { get; }
+        public bool IsConnection {  get; set; }
 
         event EventHandler SearchEvent;
         event EventHandler DeleteEvent;
@@ -38,6 +39,8 @@ namespace WinFormsPasswordManager.Views
         event EventHandler AdvancedPasswordGenerateEvent;
         event EventHandler CancelEntryDetailsEvent;
         event EventHandler OpenDatabaseEvent;
+        event EventHandler CloseEvent;
+        event EventHandler CreateDatabaseEvent;
 
 
         void SetEntryListBindingSource(BindingSource entryList);
