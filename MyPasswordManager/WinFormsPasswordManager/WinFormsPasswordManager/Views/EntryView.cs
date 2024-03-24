@@ -175,13 +175,15 @@ namespace WinFormsPasswordManager.Views
                 string path = Environment.GetLogicalDrives()[0];
                 var openFileDialog = new OpenFileDialog();
                 openFileDialog.Title = "Select database";
-                //openFileDialog.InitialDirectory = @"C:\studia\rokIII\Vsemestr\wzorceProjektowe\Projekt\wszystko\PasswordManager\MyPasswordManager\WinFormsPasswordManager\WinFormsPasswordManager\Repository";
                 openFileDialog.InitialDirectory = path;
                 openFileDialog.Filter = "All Files (*.*)|*.*|Database File (*.db)|*.db";
                 openFileDialog.FilterIndex = 2;
-                openFileDialog.ShowDialog();
-                DatabasePath = openFileDialog.FileName;
-                OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    DatabasePath = openFileDialog.FileName;
+                    OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
+                }
+
 
             };
             closeToolStripMenuItem.Click += delegate

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinFormsPasswordManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e89a1316ea6cbea4283e9cbe4cfe1d74f00030d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b1cd5e6bbfa3f3b60f826f7ec67022b4a584a16")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinFormsPasswordManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinFormsPasswordManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
