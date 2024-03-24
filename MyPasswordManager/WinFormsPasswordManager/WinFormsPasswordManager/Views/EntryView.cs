@@ -200,6 +200,9 @@ namespace WinFormsPasswordManager.Views
                 saveFileDialog.RestoreDirectory = true;
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    //open createView here 
+                    CreateView createView = new CreateView();
+                    createView.Show();
                     DatabasePath = saveFileDialog.FileName;
                     CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
 

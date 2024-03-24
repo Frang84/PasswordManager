@@ -14,14 +14,7 @@ namespace WinFormsPasswordManager.Repository
     public class EntriesContext : DbContext
     {
         public DbSet<Entry> Entries { get; set; }
-       // private static bool _created = false;
-        //public EntriesContext()
-        //{
-        //    _created = true;
-        //    Database.EnsureDeleted();
-        //    Database.EnsureCreated();
-
-        //}
+        public DbSet<DatabasePassword> Password { get; set; }
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
