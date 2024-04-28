@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsPasswordManager.Models;
+using WinFormsPasswordManager.Models.CreatePasswordModel;
+using WinFormsPasswordManager.Presenters;
 
 namespace WinFormsPasswordManager.Views
 {
@@ -24,6 +26,8 @@ namespace WinFormsPasswordManager.Views
         private long _id;
         private string _databasePath;
         private bool _isConnection;
+        public bool _passwordAndRepeat;
+        public bool _isPasswordCorrect;
        
 
 
@@ -198,12 +202,14 @@ namespace WinFormsPasswordManager.Views
                 saveFileDialog.Filter = "db files (*.db)|*.db";
                 saveFileDialog.FilterIndex = 2;
                 saveFileDialog.RestoreDirectory = true;
+
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    //open createView here 
-                    CreateView createView = new CreateView();
-                    createView.Show();
                     DatabasePath = saveFileDialog.FileName;
+                    CreateDatabaseView createDatabaseView = new CreateDatabaseView(this);
+                    PasswordOperations passwordOperations = new PasswordOperations();
+                    CreateDatabasePresenter createDatabasePresenter = new CreateDatabasePresenter(createDatabaseView, passwordOperations);
+                    createDatabaseView.Show();
                     CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
 
                 }
@@ -229,7 +235,9 @@ namespace WinFormsPasswordManager.Views
         public string DatabasePath { get => _databasePath; set => _databasePath = value; }
         public string SearchBy { get => comboBoxSearchBy.Text; }
         public bool IsConnection { get => _isConnection; set => _isConnection = value; }
-
+        public bool PasswordAndRepeat { get => _passwordAndRepeat; set => _passwordAndRepeat = value; }
+        
+        
         public event EventHandler SearchEvent;
         public event EventHandler DeleteEvent;
         public event EventHandler EditEvent;

@@ -29,6 +29,7 @@ namespace WinFormsPasswordManager.Views
         public string DatabasePath {  get; set; }
         public string SearchBy { get; }
         public bool IsConnection {  get; set; }
+        public bool PasswordAndRepeat { get; set ; }
 
         event EventHandler SearchEvent;
         event EventHandler DeleteEvent;

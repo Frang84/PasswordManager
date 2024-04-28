@@ -29,9 +29,17 @@ namespace WinFormsPasswordManager.Models
         {
             // SQLiteConnection.CreateFile(connectionString);
             OpenDatabase(connectionString);
-            using var contex = new EntriesContext();
-            contex.Database.EnsureCreated();
+            using (var contex = new EntriesContext())
+            {
+                contex.Database.EnsureCreated();
+            }
+            
 
+        }
+        public void DeleteDatabase(string connectionString)
+        {
+            using (var contex = new EntriesContext()) { contex.Database.EnsureDeleted(); }
+            
         }
 
     }

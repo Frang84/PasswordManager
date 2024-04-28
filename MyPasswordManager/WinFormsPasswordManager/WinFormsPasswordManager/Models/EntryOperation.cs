@@ -32,7 +32,8 @@ namespace WinFormsPasswordManager.Models
         {
             using(var contex = new EntriesContext())
             {
-                var result = contex.Entries.SingleOrDefault(b => b.Id == entry.Id); ;
+                var result = contex.Entries.SingleOrDefault(b => b.Id == entry.Id); 
+                
                 if(result != null)
                 {
                     

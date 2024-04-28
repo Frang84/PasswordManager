@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsPasswordManager.Models;
-
+using WinFormsPasswordManager.Models.CreatePasswordModel;
 
 namespace WinFormsPasswordManager.Repository
 {

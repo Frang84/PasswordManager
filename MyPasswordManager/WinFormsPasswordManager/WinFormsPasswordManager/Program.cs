@@ -15,6 +15,8 @@ namespace WinFormsPasswordManager
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
 
+            
+
             IPasswordIBuilder passwordIBuilder = new PasswordGenerator();
             Director director = new Director(passwordIBuilder);
             EntryOperation entryOperation = new EntryOperation(director, null);

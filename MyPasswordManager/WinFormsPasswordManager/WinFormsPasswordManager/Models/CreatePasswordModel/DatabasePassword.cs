@@ -5,11 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsPasswordManager.Models
+namespace WinFormsPasswordManager.Models.CreatePasswordModel
 {
     public class DatabasePassword
     {
         [Key]
         public string Password { get; set; }
+
+        public DatabasePassword() { }
+        public DatabasePassword(string password)
+        {
+            this.Password = password;
+        }
     }
 }
