@@ -19,17 +19,27 @@ namespace WinFormsPasswordManager.Models.CreatePasswordModel
                 contex.SaveChanges();
             }
         }
-        public void HashPassword(DatabasePassword password)
+        public DatabasePassword Get()
+        {
+            DatabasePassword result;
+            using(var context  = new EntriesContext()) 
+            {
+                result = context.Password.OrderByDescending(x => x.Id).FirstOrDefault();
+
+            }
+            return result;
+        }
+        public string HashPassword(string password)
         {
             using(SHA256 sHA256 = SHA256.Create())
             {
-                byte[] bytes = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password.Password));
+                byte[] bytes = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < bytes.Length; i++)
                 {
                     sb.Append(bytes[i].ToString("x2"));
                 }
-                password.Password = sb.ToString();
+                return sb.ToString();
             }
         }
     }

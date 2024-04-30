@@ -42,6 +42,7 @@ namespace WinFormsPasswordManager.Models
                     result.DateOfLastChange = DateTime.Now;
                     result.Password = entry.Password;
                     result.Notes = entry.Notes;
+                    result.Url = entry.Url;
                     contex.SaveChanges();
                 }
             }
@@ -65,7 +66,7 @@ namespace WinFormsPasswordManager.Models
         }
         public void Create(Entry toCreate)
         {
-
+            //dodaj szyfrowanie przed dodawaniem do bazy 
             using (var context = new EntriesContext())
             {
                 context.Add(toCreate);

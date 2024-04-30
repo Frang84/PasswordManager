@@ -29,7 +29,7 @@ namespace WinFormsPasswordManager.Presenters
             {
                 this._view.IsPasswordValid = true;
                 DatabasePassword databasePassword = new DatabasePassword(_view.Password);
-                this._passwordOperations.HashPassword(databasePassword);
+                databasePassword.Password = this._passwordOperations.HashPassword(databasePassword.Password);
                 this._passwordOperations.Add(databasePassword);
                 this._view.IsPasswordValid = true;
 

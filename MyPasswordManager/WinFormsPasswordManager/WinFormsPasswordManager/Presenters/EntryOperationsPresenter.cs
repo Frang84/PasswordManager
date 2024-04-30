@@ -8,7 +8,7 @@ using WinFormsPasswordManager.Models;
 using System.Drawing.Text;
 using WinFormsPasswordManager.Repository;
 using System.Linq.Expressions;
-
+using System.Runtime.CompilerServices;
 
 namespace WinFormsPasswordManager.Presenters
 {
@@ -18,14 +18,15 @@ namespace WinFormsPasswordManager.Presenters
         private IEntryOperationView _entryOperationView;
         private EntryOperation _entryOperation;
         private DatabaseOperations _databaseOperations;
-        private BindingSource _entrysBindingSource;
-        private IEnumerable<Entry> _entries;
+        private BindingSource _entreesBindingSource;
+        private List<Entry> _entries;
         public EntryOperationsPresenter(IEntryOperationView entryOperationView, EntryOperation entryOperation, DatabaseOperations databaseOperations)
         {
             _entryOperationView = entryOperationView;
             _entryOperation = entryOperation;
             _databaseOperations = databaseOperations;
-            _entrysBindingSource = new BindingSource();
+            _entreesBindingSource = new BindingSource();
+            _entries = new List<Entry>();
             
 
             this._entryOperationView.CreateEvent += Save;
@@ -39,15 +40,39 @@ namespace WinFormsPasswordManager.Presenters
             this._entryOperationView.CloseEvent += CloseProgram;
             this._entryOperationView.CreateDatabaseEvent += CreateDatabase;
 
-            this._entryOperationView.SetEntryListBindingSource(_entrysBindingSource);
+            this._entryOperationView.SetEntryListBindingSource(_entreesBindingSource);
         }
 
         private void LoadAllEntriesList()
         {
             this._entries = _entryOperation.GetEntries();
-            _entrysBindingSource.DataSource = this._entries;
+            _entreesBindingSource.DataSource = this._entries;
         }
-
+        private void AddEntryToList(Entry entry)
+        {
+            this._entries.Add(entry);
+            _entreesBindingSource.DataSource = this._entries;
+        }
+        private void DeleteEntryFromList(Entry entryToDelete)
+        {
+            //this._entries.Remove(entry);
+            List<Entry> list = new List<Entry>();
+            list = this._entries.Where(entry => entry.Id != entryToDelete.Id).ToList();
+            this._entries = list;
+            _entreesBindingSource.DataSource = this._entries;
+        }
+        private void LoadEditedEntry(Entry entryToEdit)
+        {
+            Entry toEdit;
+            toEdit = this._entries.Where(entry => entry.Id == entryToEdit.Id).First();
+            toEdit.Title = entryToEdit.Title;
+            toEdit.Url = entryToEdit.Url;
+            toEdit.UserName = entryToEdit.UserName;
+            toEdit.Password = entryToEdit.Password;
+            toEdit.DateOfLastChange = DateTime.Now;
+            //this._entries = list;
+            _entreesBindingSource.DataSource = this._entries;
+        }
         private void Search(object sender, EventArgs e)
         {
             bool emptyValue = string.IsNullOrEmpty(this._entryOperationView.SearchValue);
@@ -69,7 +94,7 @@ namespace WinFormsPasswordManager.Presenters
                 }
                 this._entries = this._entryOperation._searchEngine.Search(this._entryOperationView.SearchValue);
             }
-            _entrysBindingSource.DataSource = _entries;
+            _entreesBindingSource.DataSource = _entries;
         }
 
         private void Delete(object sender, EventArgs e)
@@ -77,10 +102,12 @@ namespace WinFormsPasswordManager.Presenters
 
             try
             {
-                var entry = (Entry)_entrysBindingSource.Current;
+                var entry = (Entry)_entreesBindingSource.Current;
+
                 this._entryOperation.Delete(entry);
                 _entryOperationView.Message = "Deleted successfully";
-                LoadAllEntriesList();
+
+                DeleteEntryFromList(entry);
             }catch(Exception ex)
             {
                 _entryOperationView.Message = "Delete operation failed";
@@ -89,7 +116,7 @@ namespace WinFormsPasswordManager.Presenters
 
         private void Edit(object sender, EventArgs e)
         {    
-            var entry = (Entry)_entrysBindingSource.Current;
+            var entry = (Entry)_entreesBindingSource.Current;
             _entryOperationView.Id = entry.Id;
             _entryOperationView.EntryName = entry.UserName;
             _entryOperationView.EntryTitle = entry.Title;
@@ -140,13 +167,16 @@ namespace WinFormsPasswordManager.Presenters
                 {
                     _entryOperation.Edit(entry);
                     this._entryOperationView.Message = "Entry edited";
+                    LoadEditedEntry(entry);
                 }
                 else
                 {
                     _entryOperation.Create(entry);
                     this._entryOperationView.Message = "Entry created";
+                    AddEntryToList(entry);
                 }
-                LoadAllEntriesList();
+                
+                
             }
             else
             {

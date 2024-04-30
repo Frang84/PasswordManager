@@ -91,9 +91,10 @@ namespace WinFormsPasswordManager.Views
             buttonSave.Click += delegate
             {
                 CreateEvent?.Invoke(this, EventArgs.Empty);
-                tabPageEntriesOperations.TabPages.Add(EntryList);
                 tabPageEntriesOperations.TabPages.Remove(tabPageEntryDetails);
                 tabPageEntriesOperations.TabPages.Remove(tabPagePasswordGenerator);
+                tabPageEntriesOperations.TabPages.Add(EntryList);
+
                 MessageBox.Show(_message);
                 _message = string.Empty;
             };
@@ -143,8 +144,9 @@ namespace WinFormsPasswordManager.Views
                 }
                 else
                 {
-                    tabPageEntriesOperations.TabPages.Remove(EntryList);
+                    
                     tabPageEntriesOperations.TabPages.Add(tabPageEntryDetails);
+                    tabPageEntriesOperations.TabPages.Remove(EntryList);
                     EditEvent?.Invoke(this, EventArgs.Empty);
                 }
 
@@ -184,6 +186,11 @@ namespace WinFormsPasswordManager.Views
                 openFileDialog.FilterIndex = 2;
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
+                    UnlockView unlockView = new UnlockView();
+                    PasswordOperations passwordOperations = new PasswordOperations();
+                    UnlockPresenter unlockPresenter = new UnlockPresenter(unlockView, passwordOperations);
+                    
+                    unlockView.Show();
                     DatabasePath = openFileDialog.FileName;
                     OpenDatabaseEvent?.Invoke(this, EventArgs.Empty);
                 }
@@ -197,7 +204,7 @@ namespace WinFormsPasswordManager.Views
             };
             newToolStripMenuItem.Click += delegate
             {
-                Stream myStream;
+                
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "db files (*.db)|*.db";
                 saveFileDialog.FilterIndex = 2;
@@ -206,12 +213,15 @@ namespace WinFormsPasswordManager.Views
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     DatabasePath = saveFileDialog.FileName;
+
                     CreateDatabaseView createDatabaseView = new CreateDatabaseView(this);
                     PasswordOperations passwordOperations = new PasswordOperations();
                     CreateDatabasePresenter createDatabasePresenter = new CreateDatabasePresenter(createDatabaseView, passwordOperations);
                     createDatabaseView.Show();
-                    CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
 
+  
+                    CreateDatabaseEvent?.Invoke(this, EventArgs.Empty);
+                
                 }
 
             };

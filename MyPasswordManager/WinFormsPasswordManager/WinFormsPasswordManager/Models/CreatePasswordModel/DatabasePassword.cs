@@ -10,6 +10,7 @@ namespace WinFormsPasswordManager.Models.CreatePasswordModel
     public class DatabasePassword
     {
         [Key]
+        public int Id { get; set; }
         public string Password { get; set; }
 
         public DatabasePassword() { }
