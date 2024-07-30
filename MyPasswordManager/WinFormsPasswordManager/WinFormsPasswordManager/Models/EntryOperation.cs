@@ -87,5 +87,6 @@ namespace WinFormsPasswordManager.Models
         {
             this._searchEngine = searchEngine;
         }
+
     }
 }

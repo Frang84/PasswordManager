@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\MyPasswordManager",
+    "\\MyPasswordManager\\WinFormsPasswordManager",
+    "\\MyPasswordManager\\WinFormsPasswordManager\\WinFormsPasswordManager",
+    "\\MyPasswordManager\\WinFormsPasswordManager\\WinFormsPasswordManager\\Models"
+  ],
+  "SelectedNode": "\\MyPasswordManager\\WinFormsPasswordManager\\WinFormsPasswordManager\\Models\\DatabaseOperations.cs",
+  "PreviewInSolutionExplorer": false
+}

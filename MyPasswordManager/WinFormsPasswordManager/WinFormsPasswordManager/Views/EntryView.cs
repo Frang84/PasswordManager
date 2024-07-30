@@ -28,9 +28,6 @@ namespace WinFormsPasswordManager.Views
         private bool _isConnection;
         public bool _passwordAndRepeat;
         public bool _isPasswordCorrect;
-       
-
-
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
